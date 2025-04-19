@@ -32,7 +32,7 @@ document.getElementById('plan-trip').addEventListener('click', () => {
     const destination2 = document.getElementById('destination2').value;
     const destination3 = document.getElementById('destination3').value;
 
-    fetch(`project_code/trip_planner.php?destinations=${destination1},${destination2},${destination3}`)
+    fetch(`travel-planner/project_code/trip_planner.php?destinations=${destination1},${destination2},${destination3}`)
         .then(response => response.text())
         .then(results => {
             document.getElementById('trip-results').innerHTML = results;
