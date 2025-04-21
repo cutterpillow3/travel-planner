@@ -78,3 +78,26 @@ section {
     height: auto;
     margin-bottom: 15px;
 }
+
+#destinations {
+    /* Existing styles for the destinations section */
+    overflow-x: auto; /* Or overflow-x: scroll; to always show the scrollbar */
+    white-space: nowrap; /* Prevent the destination divs from wrapping to the next line */
+    padding-bottom: 15px; /* Optional: Add some space for the scrollbar */
+}
+
+#destination-list {
+    display: flex; /* Arrange destination divs in a row */
+    flex-direction: row; /* Ensure they are in a horizontal row */
+    /* Remove or adjust any height-related properties that might be present */
+    /* height: 400px; */
+    /* overflow-y: scroll; */
+}
+
+#destination-list > div {
+    flex-shrink: 0; /* Prevent individual destination divs from shrinking */
+    margin-right: 20px; /* Add some spacing between destination divs */
+    /* You might want to set a fixed width for each destination div here if needed */
+    /* width: 300px; */
+}
+
