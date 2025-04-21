@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sustainable Travel Planner</title>
     <link rel="stylesheet" href="style.css">
-</head>
+    </head>
 <body>
     <header>
         <h1>Sustainable Travel Planner</h1>
     </header>
 
     <main>
-        <section id="destinations">
+        <section id="destinations" style="overflow-x: auto; white-space: nowrap; padding-bottom: 15px;">
             <h2>Destinations</h2>
-            <div id="destination-list">
+            <div id="destination-list" style="display: flex; flex-direction: row;">
                 </div>
         </section>
 
@@ -35,8 +35,11 @@
             <div id="trip-results">
                 </div>
         </section>
+
+        <div id="destination-details-container" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; border: 1px solid #ccc; padding: 20px; z-index: 1000;">
+        </div>
     </main>
 
     <script src="script.js"></script>
-</body>
+    </body>
 </html>
