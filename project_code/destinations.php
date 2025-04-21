@@ -14,14 +14,9 @@ function get_destinations() {
 
 $destinations = get_destinations();
 
-// Example usage to display the destinations
-foreach ($destinations as $destination) {
-    echo "<h2>" . $destination['name'] . "</h2>";
-    echo "<p>Location: " . $destination['location'] . "</p>";
-    echo "<p>Eco Rating: " . $destination['eco_rating'] . "</p>";
-    echo "<p>" . $destination['description'] . "</p>";
-    echo "<img src='" . $destination['image_path'] . "' alt='" . $destination['name'] . "' width='200'>";
-    echo "<a href='destination_details.php?id=" . $destination['destination_id'] . "'>View Details</a>";
-    echo "<hr>";
-}
+// Set the Content-Type header to application/json
+header('Content-Type: application/json');
+
+// Encode the PHP array into a JSON string and output it
+echo json_encode($destinations);
 ?>
