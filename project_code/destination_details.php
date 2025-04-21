@@ -1,4 +1,11 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include 'db_connection.php';
+
+// ... rest of your PHP code
 include 'db_connection.php';
 
 function get_destination_details($destination_id) {
@@ -23,21 +30,6 @@ function get_destination_details($destination_id) {
 $destination_id = $_GET['id'];
 $details = get_destination_details($destination_id);
 
-echo "<div class='details-container'>"; // Added container div
-
-if ($details['destination']) {
-    echo "<h2>" . $details['destination']['name'] . "</h2>";
-    echo "<p>Location: " . $details['destination']['location'] . "</p>";
-    echo "<p>Eco Rating: " . $details['destination']['eco_rating'] . "</p>";
-    echo "<p>" . $details['destination']['description'] . "</p>";
-    echo "<img src='" . $details['destination']['image_path'] . "' alt='" . $details['destination']['name'] . "' width='200'>";
-    echo "<h3>Ratings:</h3>";
-    foreach ($details['ratings'] as $rating) {
-        echo "<p>" . $rating['criteria_name'] . ": " . $rating['rating_value'] . "</p>";
-    }
-} else {
-    echo "Destination not found.";
-}
-
-echo "</div>"; // Closing container div
+header('Content-Type: application/json');
+echo json_encode($details);
 ?>
