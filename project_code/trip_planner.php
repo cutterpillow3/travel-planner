@@ -1,7 +1,7 @@
 <?php
 include 'db_connection.php';
 
-// Example: Get destinations from GET request (e.g., trip_planner.php?destinations=1,2,3)
+// Get destinations from GET request (e.g., trip_planner.php?destinations=1,2,3)
 $destination_ids = explode(',', $_GET['destinations']);
 
 function get_transport_options($from_id, $to_id) {
@@ -21,29 +21,39 @@ function get_transport_options($from_id, $to_id) {
 // Example usage.
 $trip_plan = [];
 $total_eco_rating = 0;
-for($i = 0; $i < count($destination_ids) -1; $i++){
+
+// Loop through the selected destination IDs to get transport options and eco-ratings
+for($i = 0; $i < count($destination_ids) - 1; $i++){
     $from_id = $destination_ids[$i];
     $to_id = $destination_ids[$i+1];
     $transport_options = get_transport_options($from_id, $to_id);
     $trip_plan[] = ["from" => $from_id, "to" => $to_id, "options" => $transport_options];
 
+    // Get eco-rating for the starting destination
     $db = connect_db();
-    $stmt = $db->prepare('SELECT eco_rating from destinations where destination_id = :id');
-    $stmt->bindValue(":id", $destination_ids[$i], SQLITE3_INTEGER);
+    $stmt = $db->prepare('SELECT eco_rating FROM destinations WHERE destination_id = :id');
+    $stmt->bindValue(":id", $from_id, SQLITE3_INTEGER);
     $result = $stmt->execute();
     $destination = $result->fetchArray(SQLITE3_ASSOC);
-    $total_eco_rating += $destination['eco_rating'];
     $db->close();
-
+    if ($destination) {
+        $total_eco_rating += $destination['eco_rating'];
+    }
 }
+
+// Get eco-rating for the final destination
 $db = connect_db();
-$stmt = $db->prepare('SELECT eco_rating from destinations where destination_id = :id');
+$stmt = $db->prepare('SELECT eco_rating FROM destinations WHERE destination_id = :id');
 $stmt->bindValue(":id", $destination_ids[count($destination_ids)-1], SQLITE3_INTEGER);
 $result = $stmt->execute();
 $destination = $result->fetchArray(SQLITE3_ASSOC);
-$total_eco_rating += $destination['eco_rating'];
 $db->close();
-$average_eco_rating = $total_eco_rating / count($destination_ids);
+if ($destination) {
+    $total_eco_rating += $destination['eco_rating'];
+}
+
+// Calculate the average eco-rating
+$average_eco_rating = count($destination_ids) > 0 ? $total_eco_rating / count($destination_ids) : 0;
 
 echo "<h1>Trip Plan</h1>";
 foreach($trip_plan as $trip){
