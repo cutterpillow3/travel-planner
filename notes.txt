@@ -1,0 +1,19 @@
+Average Eco Rating: no basis for the ratings provided i.e. 4.4/5
+
+no decimals? add statement round (round,1)
+
+Transportation options 
+- reflect other options for transpo
+
+
+search: ** sample travel planner using python
+
+user database 
+User ID
+User Name
+Password
+(not another page, it's like a gatekeep only, like a closable popup)
+
+popup problem
+saan pinupull yun source file nung view details
+view details - correct where to get
