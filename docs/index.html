@@ -4,42 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sustainable Travel Planner</title>
+    <meta name="description" content="Plan your sustainable travel adventures with our comprehensive travel planner.">
+    <meta name="keywords" content="sustainable travel, eco-friendly, travel planner, destinations">
     <link rel="stylesheet" href="style.css">
-    </head>
+</head>
 <body>
     <header>
         <h1>Sustainable Travel Planner</h1>
     </header>
 
     <main>
-        <section id="destinations" style="overflow-x: auto; white-space: nowrap; padding-bottom: 15px;">
+        <section id="destinations">
             <h2>Destinations</h2>
-            <div id="destination-list" style="display: flex; flex-direction: row;">
-                </div>
+            <div id="destination-list">
+                <!-- Destination items will be populated here -->
+            </div>
         </section>
 
         <section id="trip-planner">
             <h2>Trip Planner</h2>
             <div id="trip-form">
                 <label for="destination1">Destination 1:</label>
-                <select id="destination1"></select><br>
+                <select id="destination1" aria-label="Select first destination"></select>
 
                 <label for="destination2">Destination 2:</label>
-                <select id="destination2"></select><br>
+                <select id="destination2" aria-label="Select second destination"></select>
 
                 <label for="destination3">Destination 3:</label>
-                <select id="destination3"></select><br>
+                <select id="destination3" aria-label="Select third destination"></select>
 
-                <button id="plan-trip">Plan Trip</button>
+                <button id="plan-trip" class="button">Plan Trip</button>
             </div>
-            <div id="trip-results">
-                </div>
+            <div id="trip-results"></div>
         </section>
 
-        <div id="destination-details-container" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; border: 1px solid #ccc; padding: 20px; z-index: 1000;">
+        <div id="destination-details-container" class="details-container" style="display: none;">
+            <!-- Destination details will be populated here -->
+        </div>
+
+        <div id="loading-indicator" class="loading" style="display: none;">
+            Loading...
         </div>
     </main>
 
     <script src="script.js"></script>
-    </body>
+</body>
 </html>
