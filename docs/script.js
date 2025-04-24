@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const destinationList = document.getElementById('destination-list');
     const destinationSelects = document.querySelectorAll('select');
 
-    fetch('../project_code/destinations.php')
+    fetch('travel-planner/project_code/destinations.php')
         .then(response => response.json())
         .then(destinations => {
             destinationList.innerHTML = ''; // Clear existing destinations
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const destination2 = document.getElementById('destination2').value;
         const destination3 = document.getElementById('destination3').value;
 
-        fetch(`../project_code/trip_planner.php?destinations=${destination1},${destination2},${destination3}`)
+        fetch(`travel-planner/project_code/trip_planner.php?destinations=${destination1},${destination2},${destination3}`)
             .then(response => response.text())
             .then(results => {
                 document.getElementById('trip-results').innerHTML = results;
