@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -19,12 +20,13 @@ main {
     margin: 0 auto;
 }
 
-section {
+h2 {
+    color: #333;
+}
+
+/* Destinations Section */
+#destinations {
     margin-bottom: 30px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #destination-list {
@@ -37,6 +39,8 @@ section {
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #destination-list img {
@@ -45,6 +49,7 @@ section {
     margin-bottom: 10px;
 }
 
+/* Trip Planner Form */
 #trip-form label, #trip-form select {
     display: block;
     margin-bottom: 10px;
@@ -64,52 +69,23 @@ section {
     background-color: #45a049; /* Darker green on hover */
 }
 
+/* Trip Results */
 #trip-results {
     margin-top: 20px;
 }
 
 /* Destination Details Styling */
 .details-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.details-container img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 15px;
-}
-
-#destinations {
-    overflow-x: auto; /* Or overflow-x: scroll; to always show the scrollbar */
-    white-space: nowrap; /* Prevent the destination divs from wrapping to the next line */
-    padding-bottom: 15px; /* Optional: Add some space for the scrollbar */
-}
-
-#destination-list {
-    display: flex; /* Arrange destination divs in a row */
-    flex-direction: row; /* Ensure they are in a horizontal row */
-}
-
-#destination-list > div {
-    flex-shrink: 0; /* Prevent individual destination divs from shrinking */
-    margin-right: 20px; /* Add some spacing between destination divs */
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-    #destination-list {
-        flex-direction: column; /* Stack elements on smaller screens */
-    }
-
-    #destination-list > div {
-        margin-right: 0; /* Remove right margin for stacked layout */
-        margin-bottom: 20px; /* Add bottom margin for spacing */
-    }
+    border: 1px solid #ccc;
+    padding: 20px;
+    z-index: 1000; /* Ensure it's on top */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Loading Indicator Styles */
@@ -123,5 +99,13 @@ section {
     padding: 20px;
     border-radius: 8px;
     z-index: 1000; /* Ensure it's on top */
-    display: none; /* Hide by default */
+    display: none; /* Hidden by default */
+    text-align: center;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    #destination-list {
+        grid-template-columns: 1fr; /* Stack elements on smaller screens */
+    }
 }
