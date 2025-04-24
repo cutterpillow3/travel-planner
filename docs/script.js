@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>Location: ${destination.location}</p>
                     <p>Eco Rating: ${destination.eco_rating}</p>
                     <img src="${destination.image_path}" alt="${destination.name}" width="200">
-                    <a class="view-details-link" href="project_code/destination_details.php?id=${destination.destination_id}">View Details</a>
+                    <a class="view-details-link" href="travel-planner/project_code/destination_details.php?id=${destination.destination_id}">View Details</a>
                 `;
                 destinationList.appendChild(destinationDiv);
 
