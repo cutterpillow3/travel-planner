@@ -11,14 +11,19 @@
 <body>
     <header>
         <h1>Sustainable Travel Planner</h1>
+        <nav>
+            <button id="openLoginPopup">Login</button>
+            <button id="openRegistrationPopup">Register</button>
+            <span id="user-account"></span>
+            <button id="logout-button">Logout</button>
+        </nav>
     </header>
 
     <main>
         <section id="destinations">
             <h2>Destinations</h2>
             <div id="destination-list">
-                <!-- Destination items will be populated here -->
-            </div>
+                </div>
         </section>
 
         <section id="trip-planner">
@@ -39,15 +44,57 @@
         </section>
 
         <div id="destination-details-container" class="details-container" style="display: none;">
-            <!-- Destination details will be populated here -->
             <button id="close-details">Close</button>
         </div>
 
         <div id="loading-indicator" class="loading" style="display: none;">
             Loading...
         </div>
-    </main>
 
+        <div id="loginPopup" class="popup">
+            <span id="closeLogin" class="close-button">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div id="loginMessage" style="color: green; margin-bottom: 10px; display: none;"></div>
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p style="margin-top: 10px;">Don't have an account? <a href="#" id="showRegistrationFromLogin">Sign up</a></p>
+        </div>
+        <div id="overlayLogin" class="overlay"></div>
+
+        <div id="registrationPopup" class="popup">
+            <span id="closeRegistration" class="close-button">&times;</span>
+            <h2>Register</h2>
+            <form id="registrationForm">
+                <div id="registrationMessage" style="color: green; margin-bottom: 10px; display: none;"></div>
+                <div>
+                    <label for="newUsername">Username:</label>
+                    <input type="text" id="newUsername" name="newUsername" required>
+                </div>
+                <div>
+                    <label for="newPassword">Password:</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                </div>
+                <div>
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+            <p style="margin-top: 10px;">Already have an account? <a href="#" id="showLoginFromRegistration">Login</a></p>
+        </div>
+        <div id="overlayRegistration" class="overlay"></div>
+
+    </main>
     <script src="script.js"></script>
+    <script src="auth.js"></script>
 </body>
 </html>
