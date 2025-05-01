@@ -2,13 +2,14 @@
    Color Palette
 ========================= */
 :root {
-    --primary-color: #4CAF50; /* Main color */
-    --secondary-color: #f0f0f0; /* Light background color for buttons */
-    --text-color: #333; /* Main text color */
-    --hover-color: #e0e0e0; /* Hover color for buttons */
-    --error-color: red; /* Error message color */
-    --success-color: green; /* Success message color */
-    --background-color: #f4f4f4; /* Page background color */
+    --primary-color: #546e7a; /* A matte grayish blue - for primary actions */
+    --secondary-color: #e0e0e0; /* A light, neutral gray - for secondary backgrounds */
+    --text-color: #263238; /* A dark, almost black grayish blue - for strong readability */
+    --hover-color: #78909c; /* A slightly lighter matte grayish blue for hover */
+    --error-color: #d32f2f; /* A muted, matte red for errors */
+    --success-color: #388e3c; /* A muted, matte green for success (can adjust to a gray-blue if preferred) */
+    --background-color: #f0f0f0; /* A very light, matte gray for the main background */
+    --accent-color: #78909c; /* A secondary matte grayish blue for accents */
 }
 
 /* =========================
@@ -128,17 +129,18 @@ h2 {
 ========================= */
 #trip-planner {
     display: flex; /* Enable Flexbox for the trip planner section */
-    flex-direction: row; /* Arrange items horizontally */ 
+    flex-direction: row; /* Arrange items horizontally */
     align-items: stretch; /* Make items the same height */
     gap: 20px; /* Spacing between the form and results */
     margin-bottom: 30px; /* Add some space below the section */
+    border-radius: 8px; /* Soften the corners */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* A very subtle shadow */
 }
 
 #trip-form {
     flex: 1; /* Allow the form to take up available space */
     padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 8px; /* Soften the corners */
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex; /* Enable flexbox inside the form to control vertical alignment of content */
@@ -170,7 +172,7 @@ h2 {
 }
 
 .button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: var(--hover-color);
     transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
@@ -181,10 +183,9 @@ h2 {
     flex: 1; /* Allow the results to take up available space */
     margin-top: 0; /* Remove default top margin */
     padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 8px; /* Soften the corners */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* A very subtle shadow */
     background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #trip-results h3 {
@@ -205,6 +206,7 @@ h2 {
     padding: 20px;
     z-index: 1000; /* Ensure it's on top */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
 }
 
 /* =========================
