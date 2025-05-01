@@ -124,9 +124,36 @@ h2 {
 }
 
 /* =========================
-   Trip Planner Form Styles
+   Trip Planner Section
 ========================= */
-#trip-form label, #trip-form select {
+#trip-planner {
+    display: flex; /* Enable Flexbox for the trip planner section */
+    flex-direction: row; /* Arrange items horizontally */ 
+    align-items: stretch; /* Make items the same height */
+    gap: 20px; /* Spacing between the form and results */
+    margin-bottom: 30px; /* Add some space below the section */
+}
+
+#trip-form {
+    flex: 1; /* Allow the form to take up available space */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex; /* Enable flexbox inside the form to control vertical alignment of content */
+    flex-direction: column; /* Stack form elements vertically */
+    justify-content: flex-start; /* Align form elements to the top */
+}
+
+#trip-form h2 {
+    margin-top: 0; /* Remove default top margin for the header inside the form */
+    margin-bottom: 15px; /* Add some space below the header */
+    color: var(--text-color); /* Ensure header text color */
+}
+
+#trip-form label,
+#trip-form select {
     display: block;
     margin-bottom: 10px;
 }
@@ -139,6 +166,7 @@ h2 {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+    margin-top: auto; /* Push the button to the bottom of the form */
 }
 
 .button:hover {
@@ -150,7 +178,17 @@ h2 {
    Trip Results Styles
 ========================= */
 #trip-results {
-    margin-top: 20px;
+    flex: 1; /* Allow the results to take up available space */
+    margin-top: 0; /* Remove default top margin */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#trip-results h3 {
+    margin-top: 0; /* Remove default top margin for the heading */
 }
 
 /* =========================
