@@ -68,14 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const destination3 = document.getElementById('destination3').value;
 
         showLoading();
-        fetch(`/project_code/trip_planner.php?destinations=${destination1},${destination2},${destination3}`)
+        // Modify the fetch URL to potentially include transportation request
+        fetch(`/project_code/trip_planner.php?destinations=${destination1},${destination2},${destination3}&include_transport=true`)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
-                return response.json(); // Changed to expect JSON
+                return response.json(); // Expecting JSON with transport options
             })
-            .then(tripData => { // Renamed 'results' to 'tripData' for clarity
+            .then(tripData => {
                 hideLoading();
-                displayTripResults(tripData); // Call a new function to display the data
+                displayTripResults(tripData);
             })
             .catch(error => {
                 hideLoading();
@@ -87,18 +88,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayTripResults(tripData) {
         const tripResultsDiv = document.getElementById('trip-results');
         tripResultsDiv.innerHTML = '<h3>Trip Plan</h3>'; // Clear previous results and add a heading
-    
+
         if (tripData && tripData.trip_plan && Array.isArray(tripData.trip_plan) && tripData.trip_plan.length > 0) {
-            tripData.trip_plan.forEach(leg => {
-                tripResultsDiv.innerHTML += `<p>From: ${leg.from} to: ${leg.to}</p>`;
-                if (leg.options && Array.isArray(leg.options) && leg.options.length > 0) {
-                    tripResultsDiv.innerHTML += '<h4>Transport Options</h4><ul>';
-                    leg.options.forEach(option => {
+            tripData.trip_plan.forEach(destination => {
+                tripResultsDiv.innerHTML += `<h4>${destination.name}</h4>`;
+                if (destination.transport_options && Array.isArray(destination.transport_options) && destination.transport_options.length > 0) {
+                    tripResultsDiv.innerHTML += '<h5>Available Transport Options</h5><ul>';
+                    destination.transport_options.forEach(option => {
                         tripResultsDiv.innerHTML += `<li>${option.transport_type}: ${option.description}</li>`;
                     });
                     tripResultsDiv.innerHTML += '</ul>';
                 } else {
-                    tripResultsDiv.innerHTML += '<p>No transport options found for this leg.</p>';
+                    tripResultsDiv.innerHTML += '<p>No transport options found at ${destination.name}.</p>';
                 }
             });
             if (tripData.average_eco_rating !== undefined) {
@@ -158,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             detailsContainer.style.display = 'block'; // Show the details container
 
-            // Close button functionality (moved inside the if block)
+            // Close button functionality
             const closeButton = detailsContainer.querySelector('#close-details');
             if (closeButton) {
                 closeButton.addEventListener('click', () => {
