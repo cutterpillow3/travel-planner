@@ -12,6 +12,52 @@ header {
     color: white;
     padding: 20px;
     text-align: center;
+    display: flex; /* For aligning items in header */
+    justify-content: space-between; /* Space out title and nav */
+    align-items: center; /* Vertically align items */
+}
+
+header nav {
+    margin-top: 0; /* Adjust if needed */
+    display: flex; /* For aligning buttons and user info */
+    align-items: center;
+}
+
+header nav button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 1em;
+}
+
+header nav button:hover {
+    background-color: #e0e0e0;
+}
+
+#user-account {
+    display: none; /* Initially hidden */
+    margin-left: 20px;
+    color: white; /* Ensure text is visible on header background */
+}
+
+#logout-button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 1em;
+    display: none; /* Initially hidden */
+}
+
+#logout-button:hover {
+    background-color: #e0e0e0;
 }
 
 main {
@@ -27,15 +73,20 @@ h2 {
 /* Destinations Section */
 #destinations {
     margin-bottom: 30px;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping of destination divs */
+    padding-bottom: 15px; /* Optional: Space for the scrollbar */
 }
 
 #destination-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    display: inline-flex; /* Arrange items in a row, only taking necessary width */
+    flex-direction: row; /* Ensure items are in a row */
+    gap: 20px; /* Spacing between destination divs */
 }
 
 #destination-list div {
+    flex-shrink: 0; /* Prevent shrinking of destination divs */
+    width: 300px; /* Optional: Set a fixed width for each destination box */
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
@@ -101,6 +152,109 @@ h2 {
     z-index: 1000; /* Ensure it's on top */
     display: none; /* Hidden by default */
     text-align: center;
+}
+
+/* Login and Registration Popup Styles */
+.popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f9f9f9;
+    padding: 30px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 8px;
+    width: 300px; /* Adjust width as needed */
+    text-align: center;
+}
+
+.popup h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.popup div {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.popup label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.popup input[type="text"],
+.popup input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.popup button[type="submit"] {
+    background-color: #5cb85c; /* Green button */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.popup button[type="submit"]:hover {
+    background-color: #4cae4c;
+}
+
+.popup .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #888;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.popup .close-button:hover {
+    color: #333;
+}
+
+.popup p {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.popup p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.popup p a:hover {
+    text-decoration: underline;
+}
+
+/* Style for the overlay background */
+.overlay {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 999;
 }
 
 /* Media Queries for Responsive Design */
