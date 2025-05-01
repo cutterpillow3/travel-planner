@@ -22,30 +22,33 @@
 
     <!-- Main Content Section -->
     <main>
+        
+        <!-- Trip Planner Section -->
+        <section id="trip-planner">
+            <form id="trip-form" aria-labelledby="trip-planner">
+                <h2>Trip Planner</h2>
+                <label for="destination1">Destination 1:</label>
+                <select id="destination1" aria-label="Select first destination"></select>
+        
+                <label for="destination2">Destination 2:</label>
+                <select id="destination2" aria-label="Select second destination"></select>
+        
+                <label for="destination3">Destination 3:</label>
+                <select id="destination3" aria-label="Select third destination"></select>
+        
+                <button id="plan-trip" class="button" type="button">Plan Trip</button>
+            </form>
+            <div id="trip-results" aria-live="polite">
+                <h3>Trip Plan</h3>
+                <p>Trip Plan will show here</p>
+            </div>
+        </section>
+
         <!-- Destinations Section -->
         <section id="destinations">
             <h2>Destinations</h2>
             <div id="destination-list"></div>
         </section>
-
-        <!-- Trip Planner Section -->
-        <section id="trip-planner">
-            <h2>Trip Planner</h2>
-            ```html
-<form id="trip-form" aria-labelledby="trip-planner">
-                <label for="destination1">Destination 1:</label>
-                <select id="destination1" aria-label="Select first destination"></select>
-
-                <label for="destination2">Destination 2:</label>
-                <select id="destination2" aria-label="Select second destination"></select>
-
-                <label for="destination3">Destination 3:</label>
-                <select id="destination3" aria-label="Select third destination"></select>
-
-                <button id="plan-trip" class="button" type="button">Plan Trip</button>
-            </form>
-        <div id="trip-results" aria-live="polite"></div>
-    </section>
 
     <!-- Destination Details Popup -->
     <div id="destination-details-container" class="details-container" style="display: none;">
@@ -110,5 +113,4 @@
 <script src="auth.js"></script>
 </body>
 </html>
-
 
