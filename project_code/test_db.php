@@ -1,6 +1,6 @@
 <?php
 
-define('DB_PATH', 'travel-planner/database/travel.db'); // Define a constant for the database path
+define('DB_PATH', '/../travel-planner/database/travel.db'); // Define a constant for the database path
 
 function test_db_connection() {
     try {
