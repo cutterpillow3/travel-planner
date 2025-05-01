@@ -9,26 +9,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header Section -->
     <header>
         <h1>Sustainable Travel Planner</h1>
         <nav>
-            <button id="openLoginPopup">Login</button>
-            <button id="openRegistrationPopup">Register</button>
-            <span id="user-account"></span>
-            <button id="logout-button">Logout</button>
+            <button id="openLoginPopup" aria-label="Open login form">Login</button>
+            <button id="openRegistrationPopup" aria-label="Open registration form">Register</button>
+            <span id="user-account" aria-live="polite"></span>
+            <button id="logout-button" aria-label="Logout">Logout</button>
         </nav>
     </header>
 
+    <!-- Main Content Section -->
     <main>
+        <!-- Destinations Section -->
         <section id="destinations">
             <h2>Destinations</h2>
-            <div id="destination-list">
-                </div>
+            <div id="destination-list"></div>
         </section>
 
+        <!-- Trip Planner Section -->
         <section id="trip-planner">
             <h2>Trip Planner</h2>
-            <div id="trip-form">
+            ```html
+<form id="trip-form" aria-labelledby="trip-planner">
                 <label for="destination1">Destination 1:</label>
                 <select id="destination1" aria-label="Select first destination"></select>
 
@@ -38,63 +42,73 @@
                 <label for="destination3">Destination 3:</label>
                 <select id="destination3" aria-label="Select third destination"></select>
 
-                <button id="plan-trip" class="button">Plan Trip</button>
+                <button id="plan-trip" class="button" type="button">Plan Trip</button>
+            </form>
+        <div id="trip-results" aria-live="polite"></div>
+    </section>
+
+    <!-- Destination Details Popup -->
+    <div id="destination-details-container" class="details-container" style="display: none;">
+        <button id="close-details" aria-label="Close details">Close</button>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loading-indicator" class="loading" style="display: none;">Loading...</div>
+
+    <!-- Login Popup -->
+    <div id="loginPopup" class="popup" aria-hidden="true">
+        <span id="closeLogin" class="close-button" aria-label="Close login form">&times;</span>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div id="loginMessage" class="message" style="display: none;"></div>
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
             </div>
-            <div id="trip-results"></div>
-        </section>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" id="showRegistrationFromLogin">Sign up</a></p>
+    </div>
 
-        <div id="destination-details-container" class="details-container" style="display: none;">
-            <button id="close-details">Close</button>
-        </div>
+    <!-- Login Overlay -->
+    <div id="overlayLogin" class="overlay"></div>
 
-        <div id="loading-indicator" class="loading" style="display: none;">
-            Loading...
-        </div>
+    <!-- Registration Popup -->
+    <div id="registrationPopup" class="popup" aria-hidden="true">
+        <span id="closeRegistration" class="close-button" aria-label="Close registration form">&times;</span>
+        <h2>Register</h2>
+        <form id="registrationForm">
+            <div id="registrationMessage" class="message" style="display: none;"></div>
+            <div>
+                <label for="newUsername">Username:</label>
+                <input type="text" id="newUsername" name="newUsername" required>
+            </div>
+            <div>
+                <label for="newPassword">Password:</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+            </div>
+            <div>
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="#" id="showLoginFromRegistration">Login</a></p>
+    </div>
 
-        <div id="loginPopup" class="popup">
-            <span id="closeLogin" class="close-button">&times;</span>
-            <h2>Login</h2>
-            <form id="loginForm">
-                <div id="loginMessage" style="color: green; margin-bottom: 10px; display: none;"></div>
-                <div>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit">Login</button>
-            </form>
-            <p style="margin-top: 10px;">Don't have an account? <a href="#" id="showRegistrationFromLogin">Sign up</a></p>
-        </div>
-        <div id="overlayLogin" class="overlay"></div>
+    <!-- Registration Overlay -->
+    <div id="overlayRegistration" class="overlay"></div>
 
-        <div id="registrationPopup" class="popup">
-            <span id="closeRegistration" class="close-button">&times;</span>
-            <h2>Register</h2>
-            <form id="registrationForm">
-                <div id="registrationMessage" style="color: green; margin-bottom: 10px; display: none;"></div>
-                <div>
-                    <label for="newUsername">Username:</label>
-                    <input type="text" id="newUsername" name="newUsername" required>
-                </div>
-                <div>
-                    <label for="newPassword">Password:</label>
-                    <input type="password" id="newPassword" name="newPassword" required>
-                </div>
-                <div>
-                    <label for="confirmPassword">Confirm Password:</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
-                </div>
-                <button type="submit">Register</button>
-            </form>
-            <p style="margin-top: 10px;">Already have an account? <a href="#" id="showLoginFromRegistration">Login</a></p>
-        </div>
-        <div id="overlayRegistration" class="overlay"></div>
+</main>
 
-    </main>
-    <script src="script.js"></script>
-    <script src="auth.js"></script>
+<!-- JavaScript Files -->
+<script src="script.js"></script>
+<script src="auth.js"></script>
 </body>
 </html>
+
+
