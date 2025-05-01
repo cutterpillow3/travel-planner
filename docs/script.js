@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayTripResults(tripData) {
         const tripResultsDiv = document.getElementById('trip-results');
         tripResultsDiv.innerHTML = '<h3>Trip Plan</h3>'; // Clear previous results and add a heading
-
-        if (tripData && tripData.trip_plan && Array.isArray(tripData.trip_plan)) {
+    
+        if (tripData && tripData.trip_plan && Array.isArray(tripData.trip_plan) && tripData.trip_plan.length > 0) {
             tripData.trip_plan.forEach(leg => {
                 tripResultsDiv.innerHTML += `<p>From: ${leg.from} to: ${leg.to}</p>`;
                 if (leg.options && Array.isArray(leg.options) && leg.options.length > 0) {
@@ -101,12 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     tripResultsDiv.innerHTML += '<p>No transport options found for this leg.</p>';
                 }
             });
+            if (tripData.average_eco_rating !== undefined) {
+                tripResultsDiv.innerHTML += `<p><strong>Average Eco Rating:</strong> ${tripData.average_eco_rating.toFixed(2)}</p>`;
+            }
         } else {
-            tripResultsDiv.innerHTML += '<p>No trip plan data available.</p>';
-        }
-
-        if (tripData && typeof tripData.average_eco_rating !== 'undefined') {
-            tripResultsDiv.innerHTML += `<p><strong>Average Eco Rating:</strong> ${tripData.average_eco_rating.toFixed(2)}</p>`; // Display with 2 decimal places
+            tripResultsDiv.innerHTML = '<h3>Trip Plan</h3><p>Trip Plan will show here</p>'; // Display placeholder message
         }
     }
 
