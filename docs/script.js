@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Constants
+    const DESTINATIONS_URL = '/project_code/destinations.php';
+    const TRIP_PLANNER_URL = '/project_code/trip_planner.php';
+    
+    // DOM Elements
     const destinationList = document.getElementById('destination-list');
     const destinationSelects = document.querySelectorAll('select');
     const loadingIndicator = document.getElementById('loading-indicator');
@@ -17,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fetch destinations from the server
     function fetchDestinations() {
         showLoading();
-        fetch('/project_code/destinations.php')
+        fetch(DESTINATIONS_URL)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.json();
@@ -78,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const destination3 = document.getElementById('destination3').value;
 
         showLoading();
-        fetch(`/project_code/trip_planner.php?destinations=${destination1},${destination2},${destination3}&include_transport=true`)
+        fetch(`${TRIP_PLANNER_URL}?destinations=${destination1},${destination2},${destination3}&include_transport=true`)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.json(); // Expecting JSON with transport options
