@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add destination to the destination list
     function addDestinationToList(destination) {
         const destinationDiv = document.createElement('div');
+        destinationDiv.setAttribute('data-municipality', destination.municipality); // Set municipality attribute
         destinationDiv.innerHTML = `
             <h2>${destination.name}</h2>
             <p>Location: ${destination.location}</p>
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Fetch municipalities and populate the filter
-    fetch('/project_code/municipalities.php') // Create a PHP file to fetch municipalities
+    fetch('/project_code/municipalities.php')
         .then(response => response.json())
         .then(municipalities => {
             municipalities.forEach(municipality => {
@@ -113,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         destinationDivs.forEach(div => {
             const destinationName = div.querySelector('h2').textContent.toLowerCase();
-            const municipality = div.getAttribute('data-municipality'); // Assuming you set this attribute in your destination div
+            const municipality = div.getAttribute('data-municipality'); // Get the municipality attribute
 
             const matchesSearch = destinationName.includes(searchTerm);
             const matchesMunicipality = selectedMunicipality === "" || municipality === selectedMunicipality;
@@ -125,8 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
-    
+
     // Handle trip planning
     document.getElementById('plan-trip').addEventListener('click', () => {
         const destination1 = document.getElementById('destination1').value;
