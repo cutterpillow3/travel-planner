@@ -55,23 +55,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-// Handle login
-function handleLogin(event) {
-    event.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    // Handle login
+    function handleLogin(event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-    resetLoginMessage();
+        resetLoginMessage();
 
-    if (isValidLogin(username, password)) {
-        displayLoginMessage(LOGIN_SUCCESS_MESSAGE, 'green');
-        simulateLogin(username);
-        togglePopup(loginPopupDiv, overlayLoginDiv, false); // Close the login popup
-    } else {
-        displayLoginMessage(LOGIN_FAILED_MESSAGE, 'red');
+        if (isValidLogin(username, password)) {
+            displayLoginMessage(LOGIN_SUCCESS_MESSAGE, 'green');
+            simulateLogin(username);
+            togglePopup(loginPopupDiv, overlayLoginDiv, false); // Close the login popup
+        } else {
+            displayLoginMessage(LOGIN_FAILED_MESSAGE, 'red');
+        }
     }
-}
-
 
     // Handle logout
     function handleLogout() {
@@ -124,27 +123,14 @@ function handleLogin(event) {
                (username === 'guest' && password === 'justlooking');
     }
 
-// Simulate user login
-function simulateLogin(username) {
-    console.log("Simulating login for:", username); // Debug log
-    navButtons.style.display = 'none'; // Hide Login/Register buttons
-
-    if (userAccountSpan) {
-        userAccountSpan.textContent = `Hi, ${username}`; // Display user's name
-        userAccountSpan.style.display = 'inline'; // Make the user account span visible
-        console.log("User account span updated:", userAccountSpan.textContent); // Debug log
-    } else {
-        console.error("User account span element not found."); // Error log
+    // Simulate user login
+    function simulateLogin(username) {
+        navButtons.style.display = 'none'; // Hide Login/Register buttons
+        userAccountSpan.textContent = `Hi, ${username}`;
+        userAccountSpan.style.display = 'inline';
+        logoutButton.style.display = 'inline';
     }
 
-    if (logoutButton) {
-        logoutButton.style.display = 'inline'; // Show the logout button
-        console.log("Logout button displayed."); // Debug log
-    } else {
-        console.error("Logout button element not found."); // Error log
-    }
-}
-    
     // Simulate user logout
     function simulateLogout() {
         navButtons.style.display = 'block'; // Show Login/Register buttons
