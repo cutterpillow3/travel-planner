@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(municipalities => {
             municipalities.forEach(municipality => {
                 const option = document.createElement('option');
-                option.value = municipality.id; // Replace with actual ID field
-                option.textContent = municipality.name; // Replace with actual name field
+                option.value = municipality.municipality; // Update this to match your actual municipality field
+                option.textContent = municipality.municipality; // Update this to match your actual municipality field
                 municipalityFilter.appendChild(option);
             });
         });
