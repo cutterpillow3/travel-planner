@@ -1,25 +1,35 @@
-Average Eco Rating: no basis for the ratings provided i.e. 4.4/5
 
-no decimals? add statement round (round,1)
+### Walkthrough Script for Sustainable Travel Planner
 
-Transportation options 
-- reflect other options for transpo
+**[Introduction] (30 seconds)**
+- "Hello everyone, and welcome to the demo of our Sustainable Travel Planner application. Today, I’ll be walking you through the key features of the system and how it promotes eco-friendly travel choices."
 
+**[System Overview] (1 minute)**
+- "The Sustainable Travel Planner is a web-based application designed to help users plan their travel adventures while considering environmental sustainability. Built with modern web technologies such as HTML, CSS, JavaScript, and PHP, the application connects to a SQLite database to manage destination and transport data efficiently."
+- "Our goal is to empower users to make informed travel decisions by providing them with essential information about destinations, eco ratings, and transportation options."
 
-search: ** sample travel planner using python
+**[User Authentication] (30 seconds)**
+- "Let’s start by looking at the user authentication process. Users can easily register for an account or log in if they already have one. This allows them to save their trip plans and access personalized features."
+- "Once logged in, users will see their account name displayed, along with a logout button for easy access."
 
-user database 
-User ID
-User Name
-Password
-(not another page, it's like a gatekeep only, like a closable popup)
+**[Trip Planning Feature] (1 minute)**
+- "Now, let’s move on to the trip planning feature. Users can navigate to the Trip Planner section, where they can select multiple destinations from a dropdown list."
+- "As they select destinations, the application dynamically updates to show available transport options for each selected location. This helps users visualize their trip and make environmentally conscious choices."
+- "Once they’ve made their selections, they can click the 'Plan Trip' button to view a summary of their trip plan, including eco ratings and transport options available at each destination."
 
-popup problem
-saan pinupull yun source file nung view details
-view details - correct where to get
+**[Destination Information] (1 minute)**
+- "Next, let’s explore the Destinations section. Here, users can browse through a list of available destinations. Each destination includes key information such as its location, eco rating, and a brief description."
+- "By clicking on a destination, users can view additional details, including transport options available at that location. This feature is designed to help users choose destinations that align with their sustainability goals."
 
+**[Sustainability Impact] (30 seconds)**
+- "The Sustainable Travel Planner not only assists users in planning their trips but also educates them about the environmental impact of their choices. By providing eco ratings and promoting sustainable transport options, we aim to encourage responsible travel behavior."
+- "Our application empowers users to make conscious decisions that benefit both the environment and local communities."
 
-Thank you for sharing all four codes, Maureen! Here’s some feedback on your HTML, CSS, and JavaScript for the Sustainable Travel Planner:
+**[Conclusion] (30 seconds)**
+- "In conclusion, the Sustainable Travel Planner is a comprehensive tool that combines functionality with sustainability. We believe that by providing users with the right information, we can inspire them to travel in a way that respects our planet."
+- "Thank you for your attention. I’m happy to answer any questions you may have about the application or its features."
+
+---
 
 ### HTML
 1. **Semantic Structure**: Your HTML structure is well-organized with clear sections for headers, main content, and popups. Using `<section>` and `<header>` tags enhances accessibility and SEO.
