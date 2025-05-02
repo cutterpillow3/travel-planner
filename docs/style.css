@@ -37,7 +37,6 @@ header {
 }
 
 header nav {
-    margin-top: 0; /* Adjust if needed */
     display: flex; /* Align buttons and user info */
     align-items: center;
 }
