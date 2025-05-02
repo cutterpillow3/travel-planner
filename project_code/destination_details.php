@@ -1,3 +1,10 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include 'db_connection.php';
+
 function get_destination_details($destination_id) {
     $db = connect_db();
 
@@ -25,3 +32,23 @@ function get_destination_details($destination_id) {
     $db->close();
     return ['destination' => $destination, 'ratings' => $ratings];
 }
+
+// Validate and sanitize the destination ID
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $destination_id = intval($_GET['id']);
+    $details = get_destination_details($destination_id);
+
+    // Check for errors in fetching details
+    if (isset($details['error'])) {
+        header('HTTP/1.1 404 Not Found');
+        echo json_encode(['error' => $details['error']]);
+    } else {
+        header('Content-Type: application/json');
+        echo json_encode($details);
+    }
+} else {
+    // Invalid ID response
+    header('HTTP/1.1 400 Bad Request');
+    echo json_encode(['error' => 'Invalid destination ID provided.']);
+}
+?>
