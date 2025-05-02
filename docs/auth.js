@@ -55,22 +55,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Handle login
-    function handleLogin(event) {
-        event.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+// Handle login
+function handleLogin(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-        resetLoginMessage();
+    resetLoginMessage();
 
-        if (isValidLogin(username, password)) {
-            displayLoginMessage(LOGIN_SUCCESS_MESSAGE, 'green');
-            simulateLogin(username);
-            togglePopup(loginPopupDiv, overlayLoginDiv, false); // Close the login popup
-        } else {
-            displayLoginMessage(LOGIN_FAILED_MESSAGE, 'red');
-        }
+    if (isValidLogin(username, password)) {
+        displayLoginMessage(LOGIN_SUCCESS_MESSAGE, 'green');
+        simulateLogin(username);
+        togglePopup(loginPopupDiv, overlayLoginDiv, false); // Close the login popup
+    } else {
+        displayLoginMessage(LOGIN_FAILED_MESSAGE, 'red');
     }
+}
+
 
     // Handle logout
     function handleLogout() {
@@ -123,14 +124,14 @@ document.addEventListener('DOMContentLoaded', () => {
                (username === 'guest' && password === 'justlooking');
     }
 
-    // Simulate user login
-    function simulateLogin(username) {
-        navButtons.style.display = 'none'; // Hide Login/Register buttons
-        userAccountSpan.textContent = `Hi, ${username}`;
-        userAccountSpan.style.display = 'inline';
-        logoutButton.style.display = 'inline';
-    }
-
+// Simulate user login
+function simulateLogin(username) {
+    navButtons.style.display = 'none'; // Hide Login/Register buttons
+    userAccountSpan.textContent = `Hi, ${username}`; // Display user's name
+    userAccountSpan.style.display = 'inline'; // Make the user account span visible
+    logoutButton.style.display = 'inline'; // Show the logout button
+}
+    
     // Simulate user logout
     function simulateLogout() {
         navButtons.style.display = 'block'; // Show Login/Register buttons
