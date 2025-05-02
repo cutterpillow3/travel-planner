@@ -21,6 +21,10 @@ function get_transport_options_at_destination($db, $destination_id) {
     $stmt->bindValue(':destination_id', $destination_id, SQLITE3_INTEGER);
     $results = $stmt->execute();
 
+    if (!$results) {
+        return []; // Return empty if query fails
+    }
+
     $options = [];
     while($row = $results->fetchArray(SQLITE3_ASSOC)){
         $options[] = $row;
@@ -32,6 +36,11 @@ function get_eco_rating($db, $destination_id) {
     $stmt = $db->prepare('SELECT eco_rating, name FROM destinations WHERE destination_id = :id');
     $stmt->bindValue(":id", $destination_id, SQLITE3_INTEGER);
     $result = $stmt->execute();
+
+    if (!$result) {
+        return null; // Return null if query fails
+    }
+    
     return $result->fetchArray(SQLITE3_ASSOC);
 }
 
