@@ -4,12 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingIndicator = document.getElementById('loading-indicator');
     const detailsContainer = document.getElementById('destination-details-container');
 
-    // Function to show loading indicator
+    // Show loading indicator
     function showLoading() {
         loadingIndicator.style.display = 'block';
     }
 
-    // Function to hide loading indicator
+    // Hide loading indicator
     function hideLoading() {
         loadingIndicator.style.display = 'none';
     }
@@ -28,37 +28,47 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 hideLoading();
-                alert('Error loading destinations: ' + error.message);
                 console.error('Error loading destinations:', error);
+                destinationList.innerHTML = '<p>Error loading destinations. Please try again later.</p>';
             });
     }
 
     // Populate destination list and dropdowns
     function populateDestinations(destinations) {
         destinationList.innerHTML = ''; // Clear existing destinations
-        destinationSelects.forEach(select => select.innerHTML = '<option value="">Select Destination</option>'); // Clear select options
+        destinationSelects.forEach(select => {
+            select.innerHTML = '<option value="">Select Destination</option>'; // Clear select options
+        });
 
         destinations.forEach(destination => {
-            const destinationDiv = document.createElement('div');
-            destinationDiv.innerHTML = `
-                <h2>${destination.name}</h2>
-                <p>Location: ${destination.location}</p>
-                <p>Eco Rating: ${destination.eco_rating}</p>
-                <img src="${destination.image_path}" alt="${destination.name}" width="200">
-                <a class="view-details-link" href="/project_code/destination_details.php?id=${destination.destination_id}">View Details</a>
-            `;
-            destinationList.appendChild(destinationDiv);
-
-            // Populate dropdowns
-            destinationSelects.forEach(select => {
-                const option = document.createElement('option');
-                option.value = destination.destination_id;
-                option.textContent = destination.name;
-                select.appendChild(option);
-            });
+            addDestinationToList(destination);
+            populateDropdowns(destination);
         });
 
         addEventListenersToViewDetailsLinks();
+    }
+
+    // Add destination to the destination list
+    function addDestinationToList(destination) {
+        const destinationDiv = document.createElement('div');
+        destinationDiv.innerHTML = `
+            <h2>${destination.name}</h2>
+            <p>Location: ${destination.location}</p>
+            <p>Eco Rating: ${destination.eco_rating}</p>
+            <img src="${destination.image_path}" alt="${destination.name}" width="200">
+            <a class="view-details-link" href="/project_code/destination_details.php?id=${destination.destination_id}">View Details</a>
+        `;
+        destinationList.appendChild(destinationDiv);
+    }
+
+    // Populate dropdowns with destination options
+    function populateDropdowns(destination) {
+        destinationSelects.forEach(select => {
+            const option = document.createElement('option');
+            option.value = destination.destination_id;
+            option.textContent = destination.name;
+            select.appendChild(option);
+        });
     }
 
     // Handle trip planning
@@ -68,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const destination3 = document.getElementById('destination3').value;
 
         showLoading();
-        // Modify the fetch URL to potentially include transportation request
         fetch(`/project_code/trip_planner.php?destinations=${destination1},${destination2},${destination3}&include_transport=true`)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
@@ -80,11 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 hideLoading();
-                alert('Error planning trip: ' + error.message);
                 console.error('Error planning trip:', error);
+                const tripResultsDiv = document.getElementById('trip-results');
+                tripResultsDiv.innerHTML = '<h3>Trip Plan</h3><p>Error planning trip. Please try again later.</p>';
             });
     });
 
+    // Display trip results
     function displayTripResults(tripData) {
         const tripResultsDiv = document.getElementById('trip-results');
         tripResultsDiv.innerHTML = '<h3>Trip Plan</h3>'; // Clear previous results and add a heading
@@ -92,21 +103,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tripData && tripData.trip_plan && Array.isArray(tripData.trip_plan) && tripData.trip_plan.length > 0) {
             tripData.trip_plan.forEach(destination => {
                 tripResultsDiv.innerHTML += `<h4>${destination.name}</h4>`;
-                if (destination.transport_options && Array.isArray(destination.transport_options) && destination.transport_options.length > 0) {
-                    tripResultsDiv.innerHTML += '<h5>Available Transport Options</h5><ul>';
-                    destination.transport_options.forEach(option => {
-                        tripResultsDiv.innerHTML += `<li>${option.transport_type}: ${option.description}</li>`;
-                    });
-                    tripResultsDiv.innerHTML += '</ul>';
-                } else {
-                    tripResultsDiv.innerHTML += '<p>No transport options found at ${destination.name}.</p>';
-                }
+                displayTransportOptions(destination, tripResultsDiv);
             });
+
             if (tripData.average_eco_rating !== undefined) {
                 tripResultsDiv.innerHTML += `<p><strong>Average Eco Rating:</strong> ${tripData.average_eco_rating.toFixed(2)}</p>`;
             }
         } else {
             tripResultsDiv.innerHTML = '<h3>Trip Plan</h3><p>Trip Plan will show here</p>'; // Display placeholder message
+        }
+    }
+
+    // Display transport options for a destination
+    function displayTransportOptions(destination, tripResultsDiv) {
+        if (destination.transport_options && Array.isArray(destination.transport_options) && destination.transport_options.length > 0) {
+            tripResultsDiv.innerHTML += '<h5>Available Transport Options</h5><ul>';
+            destination.transport_options.forEach(option => {
+                tripResultsDiv.innerHTML += `<li>${option.transport_type}: ${option.description}</li>`;
+            });
+            tripResultsDiv.innerHTML += '</ul>';
+        } else {
+            tripResultsDiv.innerHTML += `<p>No transport options found at ${destination.name}.</p>`;
         }
     }
 
@@ -119,22 +136,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 const detailsUrl = event.target.href;
 
                 showLoading();
-                fetch(detailsUrl)
-                    .then(response => {
-                        if (!response.ok) throw new Error('Network response was not ok');
-                        return response.json();
-                    })
-                    .then(details => {
-                        hideLoading();
-                        displayDestinationDetails(details);
-                    })
-                    .catch(error => {
-                        hideLoading();
-                        alert('Error fetching destination details: ' + error.message);
-                        console.error('Error fetching destination details:', error);
-                    });
+                fetchDetails(detailsUrl);
             });
         });
+    }
+
+    // Fetch and display destination details
+    function fetchDetails(detailsUrl) {
+        fetch(detailsUrl)
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            })
+            .then(details => {
+                hideLoading();
+                displayDestinationDetails(details);
+            })
+            .catch(error => {
+                hideLoading();
+                console.error('Error fetching destination details:', error);
+                detailsContainer.innerHTML = '<p>Error fetching destination details. Please try again later.</p>';
+                detailsContainer.style.display = 'block';
+            });
     }
 
     // Display destination details in a popup
@@ -158,17 +181,20 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             detailsContainer.style.display = 'block'; // Show the details container
-
-            // Close button functionality
-            const closeButton = detailsContainer.querySelector('#close-details');
-            if (closeButton) {
-                closeButton.addEventListener('click', () => {
-                    detailsContainer.style.display = 'none'; // Hide the popup
-                });
-            }
+            addCloseDetailsButtonListener();
         } else {
             detailsContainer.innerHTML = '<p>Destination details not found.</p>';
             detailsContainer.style.display = 'block';
+        }
+    }
+
+    // Add listener for close details button
+    function addCloseDetailsButtonListener() {
+        const closeButton = detailsContainer.querySelector('#close-details');
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                detailsContainer.style.display = 'none'; // Hide the popup
+            });
         }
     }
 
