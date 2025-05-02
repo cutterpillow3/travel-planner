@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isValidLogin(username, password)) {
             displayLoginMessage(LOGIN_SUCCESS_MESSAGE, 'green');
             simulateLogin(username);
-            closeLoginPopup();
+            togglePopup(loginPopupDiv, overlayLoginDiv, false); // Close the login popup
         } else {
             displayLoginMessage(LOGIN_FAILED_MESSAGE, 'red');
         }
@@ -91,7 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
             displayRegistrationMessage(PASSWORD_MISMATCH_MESSAGE, 'red');
         } else {
             displayRegistrationMessage(REGISTRATION_SUCCESS_MESSAGE, 'green');
-            setTimeout(closeRegistrationPopup, 2000); // Close after 2 seconds
+            setTimeout(() => {
+                togglePopup(registrationPopupDiv, overlayRegistrationDiv, false); // Close the registration popup
+            }, 2000); // Close after 2 seconds
         }
     }
 
