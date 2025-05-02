@@ -63,20 +63,23 @@ header nav button:hover {
     display: none; 
     margin-left: 20px;
     color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Temporary for debugging */
 }
 
 #logout-button {
     margin-left: 10px;
     padding: 10px 15px;
     cursor: pointer;
-    border: none; /* Removed border for a cleaner look */
+    border: none;
     border-radius: 4px;
     background-color: var(--secondary-color);
     color: var(--text-color);
     font-size: 1em;
     display: none; 
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added box-shadow transition */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: rgba(0, 0, 0, 0.5); /* Temporary for debugging */
 }
+
 
 #logout-button:hover {
     background-color: var(--hover-color);
