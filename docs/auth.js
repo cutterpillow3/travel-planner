@@ -126,10 +126,23 @@ function handleLogin(event) {
 
 // Simulate user login
 function simulateLogin(username) {
+    console.log("Simulating login for:", username); // Debug log
     navButtons.style.display = 'none'; // Hide Login/Register buttons
-    userAccountSpan.textContent = `Hi, ${username}`; // Display user's name
-    userAccountSpan.style.display = 'inline'; // Make the user account span visible
-    logoutButton.style.display = 'inline'; // Show the logout button
+
+    if (userAccountSpan) {
+        userAccountSpan.textContent = `Hi, ${username}`; // Display user's name
+        userAccountSpan.style.display = 'inline'; // Make the user account span visible
+        console.log("User account span updated:", userAccountSpan.textContent); // Debug log
+    } else {
+        console.error("User account span element not found."); // Error log
+    }
+
+    if (logoutButton) {
+        logoutButton.style.display = 'inline'; // Show the logout button
+        console.log("Logout button displayed."); // Debug log
+    } else {
+        console.error("Logout button element not found."); // Error log
+    }
 }
     
     // Simulate user logout
