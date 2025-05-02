@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Constants for messages
+    const LOGIN_SUCCESS_MESSAGE = 'Login successful!';
+    const LOGIN_FAILED_MESSAGE = 'Login failed. Incorrect username or password.';
+    const REGISTRATION_SUCCESS_MESSAGE = 'Thank you for registering! You can now proceed to log in.';
+    const PASSWORD_MISMATCH_MESSAGE = 'Registration failed. Passwords do not match.';
+
+    // DOM Elements
     const loginForm = document.getElementById('loginForm');
     const registrationForm = document.getElementById('registrationForm');
     const loginMessageDiv = document.getElementById('loginMessage');
@@ -7,83 +14,61 @@ document.addEventListener('DOMContentLoaded', () => {
     const openRegistrationPopup = document.getElementById('openRegistrationPopup');
     const userAccountSpan = document.getElementById('user-account');
     const logoutButton = document.getElementById('logout-button');
-    const navButtons = document.querySelector('header nav'); // Select the nav to hide buttons
+    const navButtons = document.querySelector('header nav');
     const loginPopupDiv = document.getElementById('loginPopup');
     const overlayLoginDiv = document.getElementById('overlayLogin');
     const registrationPopupDiv = document.getElementById('registrationPopup');
     const overlayRegistrationDiv = document.getElementById('overlayRegistration');
 
-    // Event listener for login form submission
-    if (loginForm) {
-        loginForm.addEventListener('submit', handleLogin);
-    }
+    // Event Listeners
+    if (loginForm) loginForm.addEventListener('submit', handleLogin);
+    if (logoutButton) logoutButton.addEventListener('click', handleLogout);
+    if (registrationForm) registrationForm.addEventListener('submit', handleRegistration);
+    if (openLoginPopup) openLoginPopup.addEventListener('click', () => togglePopup(loginPopupDiv, overlayLoginDiv, true));
+    if (openRegistrationPopup) openRegistrationPopup.addEventListener('click', () => togglePopup(registrationPopupDiv, overlayRegistrationDiv, true));
 
-    // Event listener for logout button
-    if (logoutButton) {
-        logoutButton.addEventListener('click', handleLogout);
-    }
-
-    // Event listener for registration form submission
-    if (registrationForm) {
-        registrationForm.addEventListener('submit', handleRegistration);
-    }
-
-    // Open login popup
-    if (openLoginPopup) {
-        openLoginPopup.addEventListener('click', () => togglePopup(loginPopupDiv, overlayLoginDiv, true));
-    }
-
-    // Open registration popup
-    if (openRegistrationPopup) {
-        openRegistrationPopup.addEventListener('click', () => togglePopup(registrationPopupDiv, overlayRegistrationDiv, true));
-    }
-
-    // Close login popup
-    const closeLoginButton = document.getElementById('closeLogin');
-    if (closeLoginButton) closeLoginButton.addEventListener('click', () => togglePopup(loginPopupDiv, overlayLoginDiv, false));
-    if (overlayLoginDiv) overlayLoginDiv.addEventListener('click', () => togglePopup(loginPopupDiv, overlayLoginDiv, false));
-
-    // Close registration popup
-    const closeRegistrationButton = document.getElementById('closeRegistration');
-    if (closeRegistrationButton) closeRegistrationButton.addEventListener('click', () => togglePopup(registrationPopupDiv, overlayRegistrationDiv, false));
-    if (overlayRegistrationDiv) overlayRegistrationDiv.addEventListener('click', () => togglePopup(registrationPopupDiv, overlayRegistrationDiv, false));
+    // Close popups
+    setupPopupClose(loginPopupDiv, overlayLoginDiv, 'closeLogin');
+    setupPopupClose(registrationPopupDiv, overlayRegistrationDiv, 'closeRegistration');
 
     // Show registration form from login
-    const showRegistrationFromLoginLink = document.getElementById('showRegistrationFromLogin');
-    if (showRegistrationFromLoginLink) {
-        showRegistrationFromLoginLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            togglePopup(loginPopupDiv, overlayLoginDiv, false);
-            togglePopup(registrationPopupDiv, overlayRegistrationDiv, true);
-        });
+    setupSwitchFormLink('showRegistrationFromLogin', loginPopupDiv, overlayLoginDiv, registrationPopupDiv, overlayRegistrationDiv);
+    // Show login form from registration
+    setupSwitchFormLink('showLoginFromRegistration', registrationPopupDiv, overlayRegistrationDiv, loginPopupDiv, overlayLoginDiv);
+
+    // Function to set up popup close functionality
+    function setupPopupClose(popupDiv, overlayDiv, closeButtonId) {
+        const closeButton = document.getElementById(closeButtonId);
+        if (closeButton) closeButton.addEventListener('click', () => togglePopup(popupDiv, overlayDiv, false));
+        if (overlayDiv) overlayDiv.addEventListener('click', () => togglePopup(popupDiv, overlayDiv, false));
     }
 
-    // Show login form from registration
-    const showLoginFromRegistrationLink = document.getElementById('showLoginFromRegistration');
-    if (showLoginFromRegistrationLink) {
-        showLoginFromRegistrationLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            togglePopup(registrationPopupDiv, overlayRegistrationDiv, false);
-            togglePopup(loginPopupDiv, overlayLoginDiv, true);
-        });
+    // Function to set up switching form links
+    function setupSwitchFormLink(linkId, currentPopupDiv, currentOverlayDiv, targetPopupDiv, targetOverlayDiv) {
+        const link = document.getElementById(linkId);
+        if (link) {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                togglePopup(currentPopupDiv, currentOverlayDiv, false);
+                togglePopup(targetPopupDiv, targetOverlayDiv, true);
+            });
+        }
     }
 
     // Handle login
     function handleLogin(event) {
         event.preventDefault();
-        const usernameInput = document.getElementById('username');
-        const passwordInput = document.getElementById('password');
-        const username = usernameInput.value;
-        const password = passwordInput.value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
         resetLoginMessage();
 
         if (isValidLogin(username, password)) {
-            displayLoginMessage('Login successful!', 'green');
+            displayLoginMessage(LOGIN_SUCCESS_MESSAGE, 'green');
             simulateLogin(username);
-            closeLoginPopup(); // Close the login popup
+            closeLoginPopup();
         } else {
-            displayLoginMessage('Login failed. Incorrect username or password.', 'red');
+            displayLoginMessage(LOGIN_FAILED_MESSAGE, 'red');
         }
     }
 
@@ -96,19 +81,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle registration
     function handleRegistration(event) {
         event.preventDefault();
-        const newUsernameInput = document.getElementById('newUsername');
-        const newPasswordInput = document.getElementById('newPassword');
-        const confirmPasswordInput = document.getElementById('confirmPassword');
-        const newUsername = newUsernameInput.value;
-        const newPassword = newPasswordInput.value;
-        const confirmPassword = confirmPasswordInput.value;
+        const newUsername = document.getElementById('newUsername').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
 
         resetRegistrationMessage();
 
         if (newPassword !== confirmPassword) {
-            displayRegistrationMessage('Registration failed. Passwords do not match.', 'red');
+            displayRegistrationMessage(PASSWORD_MISMATCH_MESSAGE, 'red');
         } else {
-            displayRegistrationMessage('Thank you for registering! You can now proceed to log in.', 'green');
+            displayRegistrationMessage(REGISTRATION_SUCCESS_MESSAGE, 'green');
             setTimeout(closeRegistrationPopup, 2000); // Close after 2 seconds
         }
     }
@@ -141,21 +123,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Simulate user login
     function simulateLogin(username) {
-        if (navButtons) navButtons.style.display = 'none'; // Hide Login/Register buttons
-        if (userAccountSpan) {
-            userAccountSpan.textContent = `Hi, ${username}`;
-            userAccountSpan.style.display = 'inline';
-        }
-        if (logoutButton) logoutButton.style.display = 'inline';
+        navButtons.style.display = 'none'; // Hide Login/Register buttons
+        userAccountSpan.textContent = `Hi, ${username}`;
+        userAccountSpan.style.display = 'inline';
+        logoutButton.style.display = 'inline';
     }
 
     // Simulate user logout
     function simulateLogout() {
-        if (navButtons) navButtons.style.display = 'block'; // Show Login/Register buttons
-        if (userAccountSpan) {
-            userAccountSpan.style.display = 'none';
-            userAccountSpan.textContent = '';
-        }
+        navButtons.style.display = 'block'; // Show Login/Register buttons
+        userAccountSpan.style.display = 'none';
+        userAccountSpan.textContent = '';
         logoutButton.style.display = 'none';
     }
 
