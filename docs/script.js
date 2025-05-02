@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const destinationSelects = document.querySelectorAll('select');
     const loadingIndicator = document.getElementById('loading-indicator');
     const detailsContainer = document.getElementById('destination-details-container');
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+    const clearSearchButton = document.getElementById('clear-search-button');
+    const municipalityFilter = document.getElementById('municipality-filter');
 
     // Show loading indicator
     function showLoading() {
@@ -76,6 +80,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Fetch municipalities and populate the filter
+    fetch('/project_code/municipalities.php') // Create a PHP file to fetch municipalities
+        .then(response => response.json())
+        .then(municipalities => {
+            municipalities.forEach(municipality => {
+                const option = document.createElement('option');
+                option.value = municipality.id; // Replace with actual ID field
+                option.textContent = municipality.name; // Replace with actual name field
+                municipalityFilter.appendChild(option);
+            });
+        });
+
+    // Add event listener for the search button
+    searchButton.addEventListener('click', filterDestinations);
+
+    // Add event listener for the clear search button
+    clearSearchButton.addEventListener('click', () => {
+        searchInput.value = ''; // Clear the search input
+        municipalityFilter.value = ''; // Reset the municipality filter
+        filterDestinations(); // Reapply the filter to show all destinations
+    });
+
+    // Add event listener for municipality filter change
+    municipalityFilter.addEventListener('change', filterDestinations);
+
+    function filterDestinations() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedMunicipality = municipalityFilter.value;
+
+        const destinationDivs = document.querySelectorAll('#destination-list div');
+
+        destinationDivs.forEach(div => {
+            const destinationName = div.querySelector('h2').textContent.toLowerCase();
+            const municipality = div.getAttribute('data-municipality'); // Assuming you set this attribute in your destination div
+
+            const matchesSearch = destinationName.includes(searchTerm);
+            const matchesMunicipality = selectedMunicipality === "" || municipality === selectedMunicipality;
+
+            if (matchesSearch && matchesMunicipality) {
+                div.style.display = 'block'; // Show matching destination
+            } else {
+                div.style.display = 'none'; // Hide non-matching destination
+            }
+        });
+    }
+});
+    
     // Handle trip planning
     document.getElementById('plan-trip').addEventListener('click', () => {
         const destination1 = document.getElementById('destination1').value;
