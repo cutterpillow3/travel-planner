@@ -8,10 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const destinationSelects = document.querySelectorAll('select');
     const loadingIndicator = document.getElementById('loading-indicator');
     const detailsContainer = document.getElementById('destination-details-container');
-    const searchInput = document.getElementById('search-input');
-    const searchButton = document.getElementById('search-button');
-    const clearSearchButton = document.getElementById('clear-search-button');
-    const municipalityFilter = document.getElementById('municipality-filter');
 
     // Show loading indicator
     function showLoading() {
@@ -60,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add destination to the destination list
     function addDestinationToList(destination) {
         const destinationDiv = document.createElement('div');
-        destinationDiv.setAttribute('data-municipality', destination.municipality); // Set municipality attribute
         destinationDiv.innerHTML = `
             <h2>${destination.name}</h2>
             <p>Location: ${destination.location}</p>
@@ -78,52 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
             option.value = destination.destination_id;
             option.textContent = destination.name;
             select.appendChild(option);
-        });
-    }
-
-    // Fetch municipalities and populate the filter
-    fetch('/project_code/municipalities.php')
-        .then(response => response.json())
-        .then(municipalities => {
-            municipalities.forEach(municipality => {
-                const option = document.createElement('option');
-                option.value = municipality.municipality; // Update this to match your actual municipality field
-                option.textContent = municipality.municipality; // Update this to match your actual municipality field
-                municipalityFilter.appendChild(option);
-            });
-        });
-
-    // Add event listener for the search button
-    searchButton.addEventListener('click', filterDestinations);
-
-    // Add event listener for the clear search button
-    clearSearchButton.addEventListener('click', () => {
-        searchInput.value = ''; // Clear the search input
-        municipalityFilter.value = ''; // Reset the municipality filter
-        filterDestinations(); // Reapply the filter to show all destinations
-    });
-
-    // Add event listener for municipality filter change
-    municipalityFilter.addEventListener('change', filterDestinations);
-
-    function filterDestinations() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const selectedMunicipality = municipalityFilter.value;
-
-        const destinationDivs = document.querySelectorAll('#destination-list div');
-
-        destinationDivs.forEach(div => {
-            const destinationName = div.querySelector('h2').textContent.toLowerCase();
-            const municipality = div.getAttribute('data-municipality'); // Get the municipality attribute
-
-            const matchesSearch = destinationName.includes(searchTerm);
-            const matchesMunicipality = selectedMunicipality === "" || municipality === selectedMunicipality;
-
-            if (matchesSearch && matchesMunicipality) {
-                div.style.display = 'block'; // Show matching destination
-            } else {
-                div.style.display = 'none'; // Hide non-matching destination
-            }
         });
     }
 
