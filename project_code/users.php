@@ -1,11 +1,11 @@
 <?php
 // users.php
 
-require_once 'db_connection.php'; // Include the database connection file
+require_once 'db_connection.php';
 
 // Function to handle user login
 function loginUser($username, $password) {
-    $db = connect_db(); // Establish database connection using the function from db_connection.php
+    $db = connect_db();
 
     // Prepare a SQL statement to fetch the user by username
     $stmt = $db->prepare("SELECT user_id, username, password FROM users WHERE username = :username");
