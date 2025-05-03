@@ -17,8 +17,6 @@ function loginUser($username, $password) {
 
     // Check if a user with the given username exists
     if ($user) {
-        // Verify the password (for now, we'll do a simple string comparison)
-        // **IMPORTANT: In a real application, you should use password_hash() and password_verify() for security!**
         if ($password === $user['password']) {
             // Password matches, return the user ID
             return $user['user_id'];
