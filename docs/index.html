@@ -24,8 +24,7 @@
     <main>
         <!-- Trip Planner Section -->
         <section id="trip-planner">
-            ```html
-<form id="trip-form" aria-labelledby="trip-planner">
+            <form id="trip-form" aria-labelledby="trip-planner">
                 <h2>Trip Planner</h2>
                 <label for="destination1">Destination 1:</label>
                 <select id="destination1" aria-label="Select first destination"></select>
@@ -47,18 +46,6 @@
     <!-- Destinations Section -->
     <section id="destinations">
         <h2>Destinations</h2>
-        <div>
-            <input type="text" id="search-input" placeholder="Search destinations..." aria-label="Search destinations">
-            <button id="search-button" class="button">Search</button> <!-- Search button -->
-            <button id="clear-search-button" class="button">Clear Search</button> <!-- Clear Search button -->
-        </div>
-        <div id="filter-options">
-            <label for="municipality-filter">Filter by Municipality:</label>
-            <select id="municipality-filter">
-                <option value="">All</option>
-                <!-- Options will be populated dynamically -->
-            </select>
-        </div>
         <div id="destination-list"></div>
     </section>
 
@@ -122,5 +109,6 @@
 <!-- JavaScript Files -->
 <script src="script.js"></script>
 <script src="auth.js"></script>
-    </body>
+</body>
 </html>
+
