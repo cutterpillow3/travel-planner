@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const destinationDiv = document.createElement('div');
         destinationDiv.innerHTML = `
             <h2>${destination.name}</h2>
-            <p>Location: ${destination.location}</p>
+            <p>Municipality: ${destination.municipality}</p>
             <p>Eco Rating: ${destination.eco_rating}</p>
             <img src="${destination.image_path}" alt="${destination.name}" width="200">
             <a class="view-details-link" href="/project_code/destination_details.php?id=${destination.destination_id}">View Details</a>
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 hideLoading();
                 console.error('Error planning trip:', error);
                 const tripResultsDiv = document.getElementById('trip-results');
-                tripResultsDiv.innerHTML = '<h3>Trip Plan</h3><p>Error planning trip. Please try again later.</p>';
+                tripResultsDiv.innerHTML = '<h3>Transport Options</h3><p>Error planning trip. Please try again later.</p>';
             });
     });
 
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tripResultsDiv.innerHTML += `<p><strong>Average Eco Rating:</strong> ${tripData.average_eco_rating.toFixed(2)}</p>`;
             }
         } else {
-            tripResultsDiv.innerHTML = '<h3>Trip Plan</h3><p>Trip Plan will show here</p>'; // Display placeholder message
+            tripResultsDiv.innerHTML = '<h3>Trip Plan</h3><p>Trip Planner results will show here with transport options</p>'; // Display placeholder message
         }
     }
 
