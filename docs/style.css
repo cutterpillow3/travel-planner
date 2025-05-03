@@ -2,14 +2,14 @@
    Color Palette
 ========================= */
 :root {
-    --primary-color: #546e7a; /* A matte grayish blue - for primary actions */
-    --secondary-color: #e0e0e0; /* A light, neutral gray - for secondary backgrounds */
-    --text-color: #263238; /* A dark, almost black grayish blue - for strong readability */
-    --hover-color: #78909c; /* A slightly lighter matte grayish blue for hover */
-    --error-color: #d32f2f; /* A muted, matte red for errors */
-    --success-color: #388e3c; /* A muted, matte green for success */
-    --background-color: #f0f0f0; /* A very light, matte gray for the main background */
-    --accent-color: #78909c; /* A secondary matte grayish blue for accents */
+    --primary-color: #A7B59E; /* Light Green from palette */
+    --secondary-color: #ecd3d8; /* Light Pink from palette */
+    --text-color: #35522B; /* Dark Green from palette */
+    --hover-color: #799567; /* Medium Green from palette */
+    --error-color: #d32f2f; /* Keep as is or adjust to a palette color */
+    --success-color: #388e3c; /* Keep as is or adjust to a palette color */
+    --background-color: #e3d6d3; /* Very Light Pink from palette */
+    --accent-color: #799567; /* Medium Green from palette */
 }
 
 /* =========================
@@ -27,17 +27,14 @@ body {
    Header Styles
 ========================= */
 header {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--primary-color); /* Light Green */
+    color: var(--text-color); /* Dark Green */
     padding: 20px;
+    font-family: 'Agbalumo', sans-serif;
+    font-size: 1.1em;
     text-align: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-}
-
-header nav {
-    display: flex;
     align-items: center;
 }
 
@@ -45,43 +42,43 @@ header nav button {
     padding: 10px 15px;
     margin-left: 10px;
     cursor: pointer;
-    border: none; /* Removed border for a cleaner look */
+    border: none;
     border-radius: 4px;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
+    background-color: var(--secondary-color); /* Light Pink */
+    color: var(--text-color); /* Dark Green */
     font-size: 1em;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added box-shadow transition */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 header nav button:hover {
-    background-color: var(--hover-color);
+    background-color: var(--hover-color); /* Medium Green */
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #user-account {
-    display: none; 
+    display: none;
     margin-left: 20px;
-    color: white;
+    color: var(--text-color); /* Dark Green */
 }
 
 #logout-button {
     margin-left: 10px;
     padding: 10px 15px;
     cursor: pointer;
-    border: none; /* Removed border for a cleaner look */
+    border: none;
     border-radius: 4px;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
+    background-color: var(--secondary-color); /* Light Pink */
+    color: var(--text-color); /* Dark Green */
     font-size: 1em;
-    display: none; 
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added box-shadow transition */
+    display: none;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #logout-button:hover {
-    background-color: var(--hover-color);
+    background-color: var(--hover-color); /* Medium Green */
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* =========================
@@ -94,9 +91,9 @@ main {
 }
 
 h2 {
-    color: var(--text-color);
-    font-size: 1.8em; /* Increased font size for better visibility */
-    margin-bottom: 10px; /* Added margin below headings */
+    color: var(--text-color); /* Dark Green */
+    font-size: 1.8em;
+    margin-bottom: 10px;
 }
 
 /* =========================
@@ -112,18 +109,18 @@ h2 {
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+    background-color: rgb(243, 245, 243);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     height: 100%;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #destination-list div:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 #destination-list img {
@@ -142,7 +139,7 @@ h2 {
 }
 
 #destination-list p {
-    color: #555;
+    color: var(--text-color);
     font-size: 0.9em;
     margin-bottom: 5px;
 }
@@ -154,18 +151,18 @@ h2 {
 #destination-list a.view-details-link {
     display: block;
     padding: 8px 12px;
-    text-align: center;
-    background-color: var(--secondary-color);
     color: var(--text-color);
+    text-align: center;
+    background-color: var(--primary-color);
     text-decoration: none;
     border-radius: 4px;
     font-size: 0.9em;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Added transition */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #destination-list a.view-details-link:hover {
     background-color: var(--hover-color);
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    transform: scale(1.05);
 }
 
 /* =========================
@@ -185,7 +182,7 @@ h2 {
     flex: 1;
     padding: 15px;
     border-radius: 8px;
-    background-color: white;
+    background-color: rgb(243, 245, 243);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -195,30 +192,31 @@ h2 {
 #trip-form h2 {
     margin-top: 0;
     margin-bottom: 15px;
-    color: var(--text-color);
+    color: var(--text-color); /* Dark Green */
 }
 
 #trip-form label,
 #trip-form select {
     display: block;
     margin-bottom: 10px;
+    color: var(--text-color); /* Dark Green */
 }
 
 .button {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--primary-color); /* Light Green */
+    color: var(--text-color); /* Dark Green */
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added box-shadow transition */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     margin-top: auto;
 }
 
 .button:hover {
-    background-color: var(--hover-color);
+    background-color: var(--hover-color); /* Medium Green */
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* =========================
@@ -230,10 +228,11 @@ h2 {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    background-color: white;
+    background-color: rgb(243, 245, 243); /* Keep white for result background for contrast */
 }
 
 #trip-results h3 {
+    color: var(--text-color); /* Dark Green */
     margin-top: 0;
 }
 
@@ -246,7 +245,7 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: #bfcebf; /* Light Pink */
     border: 1px solid #ccc;
     padding: 20px;
     z-index: 1000;
@@ -255,6 +254,7 @@ h2 {
     max-width: 90%;
     max-height: 90%;
     overflow: auto;
+    color: var(--text-color); /* Dark Green */
 }
 
 /* =========================
@@ -272,6 +272,7 @@ h2 {
     z-index: 1000;
     display: none;
     text-align: center;
+    color: var(--text-color); /* Dark Green */
 }
 
 /* =========================
@@ -283,7 +284,7 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Keep light for contrast */
     padding: 30px;
     border: 1px solid #ddd;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -291,10 +292,11 @@ h2 {
     border-radius: 8px;
     width: 300px;
     text-align: center;
+    color: var(--text-color); /* Dark Green */
 }
 
 .popup h2 {
-    color: var(--text-color);
+    color: var(--text-color); /* Dark Green */
     margin-bottom: 20px;
 }
 
@@ -318,11 +320,12 @@ h2 {
     box-sizing: border-box;
     border-radius: 4px;
     font-size: 1em;
+    color: var(--text-color); /* Dark Green */
 }
 
 .popup button[type="submit"] {
-    background-color: #5cb85c;
-    color: white;
+    background-color: var(--primary-color); /* Light Green */
+    color: var(--text-color); /* Dark Green */
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -334,7 +337,7 @@ h2 {
 }
 
 .popup button[type="submit"]:hover {
-    background-color: #4cae4c;
+    background-color: var(--hover-color); /* Medium Green */
     transform: scale(1.05);
 }
 
@@ -361,7 +364,7 @@ h2 {
 }
 
 .popup p a {
-    color: #007bff;
+    color: #007bff; /* Keep blue for links for better recognition */
     text-decoration: none;
 }
 
