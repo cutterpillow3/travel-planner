@@ -97,6 +97,17 @@ h2 {
 }
 
 /* =========================
+   How to Use Section Container Styles
+========================= */
+.how-to-use-container {
+    max-width: 1100px; /* Adjust this value as needed for the How to Use section */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 10px; /* Optional: Add some padding inside the container */
+    text-align: left; /* Adjust text alignment within the section if desired */
+    /* You can add other specific styles here if needed */
+}
+
+/* =========================
    Destinations Section
 ========================= */
 #destination-list {
@@ -282,6 +293,26 @@ h2 {
     max-height: 90%;
     overflow: auto;
     color: var(--text-color); /* Dark Green */
+}
+
+#close-details {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px; /* Match button padding */
+    border: none;
+    border-radius: 4px; /* Match button border-radius */
+    background-color: var(--accent-color); /* Light Pink like other buttons */
+    color: var(--text-color); /* Dark Green like other button text */
+    font-size: 1em; /* Adjust if needed */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#close-details:hover {
+    background-color: var(--hover-color); /* Medium Green on hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* =========================
