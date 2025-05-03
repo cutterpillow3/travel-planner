@@ -8,7 +8,7 @@
     --hover-color: #799567; /* Medium Green from palette */
     --error-color: #d32f2f; /* Keep as is or adjust to a palette color */
     --success-color: #388e3c; /* Keep as is or adjust to a palette color */
-    --background-color: #e3d6d3; /* Very Light Pink from palette */
+    --background-color: #eae4e2; /* Very Light Pink from palette */
     --accent-color: #799567; /* Medium Green from palette */
 }
 
@@ -16,7 +16,7 @@
    General Styles
 ========================= */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
@@ -27,11 +27,11 @@ body {
    Header Styles
 ========================= */
 header {
-    background-color: var(--primary-color); /* Light Green */
+    background-color: var(--primary-color);
     color: var(--text-color); /* Dark Green */
     padding: 20px;
     font-family: 'Agbalumo', sans-serif;
-    font-size: 1.1em;
+    font-size: 1em;
     text-align: center;
     display: flex;
     justify-content: space-between;
@@ -44,7 +44,7 @@ header nav button {
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    background-color: var(--secondary-color); /* Light Pink */
+    background-color: var(--primary-color); /* Light Pink */
     color: var(--text-color); /* Dark Green */
     font-size: 1em;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
@@ -109,7 +109,7 @@ h2 {
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
-    background-color: rgb(243, 245, 243);
+    background-color: #decdc9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -182,7 +182,7 @@ h2 {
     flex: 1;
     padding: 15px;
     border-radius: 8px;
-    background-color: rgb(243, 245, 243);
+    background-color: rgb(245, 249, 242);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -200,6 +200,32 @@ h2 {
     display: block;
     margin-bottom: 10px;
     color: var(--text-color); /* Dark Green */
+}
+
+#trip-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: var(--background-color); /* Light Pink */
+    color: var(--text-color); /* Dark Green */
+    font-size: 0.8em;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%2335522B" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center;
+}
+
+#trip-form select:hover {
+    border-color: var(--hover-color);
+}
+
+#trip-form select option {
+    background-color: white;
+    color: var(--text-color);
 }
 
 .button {
@@ -228,7 +254,7 @@ h2 {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    background-color: rgb(243, 245, 243); /* Keep white for result background for contrast */
+    background-color: rgb(245, 249, 242); /* Keep white for result background for contrast */
 }
 
 #trip-results h3 {
@@ -245,7 +271,7 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #bfcebf; /* Light Pink */
+    background-color: #d6e1d0; /* Light Pink */
     border: 1px solid #ccc;
     padding: 20px;
     z-index: 1000;
