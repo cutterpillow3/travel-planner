@@ -12,7 +12,7 @@ function connect_db(): SQLite3 {
     return $db;
 }
 
-// Optional: Function to close the database connection
+// Function to close the database connection as needed
 function close_db(SQLite3 $db): void {
     $db->close();
 }
