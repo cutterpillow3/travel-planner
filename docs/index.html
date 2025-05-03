@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sustainable Travel Planner</title>
-    <meta name="description" content="Plan your sustainable travel adventures with our comprehensive travel planner.">
-    <meta name="keywords" content="sustainable travel, eco-friendly, travel planner, destinations">
+    <title>Travel Planner by Mau</title>
+    <meta name="description" content="A sustainable travel planner with Philippine own destinations.">
+    <meta name="keywords" content="sustainable, travel, eco-friendly, travel planner, Philippines">
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo:wght@400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header Section -->
     <header>
-        <h1>Sustainable Travel Planner</h1>
+        <h1>Travel Planner by Mau</h1>
         <nav>
             <button id="openLoginPopup" aria-label="Open login form">Login</button>
             <button id="openRegistrationPopup" aria-label="Open registration form">Register</button>
@@ -39,9 +41,11 @@
             </form>
         <div id="trip-results" aria-live="polite">
             <h3>Trip Plan</h3>
-            <p>Trip Plan will show here</p>
+            <p>Trip Planner results will show here with transport options</p>
         </div>
     </section>
+
+</section>
 
     <!-- Destinations Section -->
     <section id="destinations">
@@ -53,6 +57,42 @@
     <div id="destination-details-container" class="details-container hidden">
         <button id="close-details" aria-label="Close details">Close</button>
     </div>
+    
+    <!-- How to Use Section -->
+     <section id="how-to-use">
+    <h2>How to Use Travel Planner by Mau</h2>
+    <ol>
+        <li>
+            You can browse the list of available destinations either in the Destination section below or directly within the Trip Planner section.
+        </li>
+        <li>
+            You may get more details about a destination by clicking the "View Details" button in the Destination section.
+        </li>
+        <li>
+            Eco Rating Explained <span aria-label="leaf">&#x1F331;</span> Eco Rating per destination is computed by the average rating value of:
+            <ul>
+                <li><span aria-label="train or bus">&#x1F686;</span> Sustainable Transportation</li>
+                <li><span aria-label="footprints">&#x1F463;</span> Low Impact Activities</li>
+                <li><span aria-label="temple">&#x1F6D5;</span> Cultural Preservation</li>
+                <li><span aria-label="whale">&#x1F40B;</span> Marine Ecosystem Protection</li>
+            </ul>
+        </li>
+        <li>
+            Once you've decided, you can now use the Trip Planner and select up to 3 destinations of your choice.
+        </li>
+        <li>
+            Trip Plan results will display the transport options for each destination you've selected, including:
+            <ul>
+                <li><span aria-label="boat">&#x1F6A2;</span> Boat</li>
+                <li><span aria-label="bus">&#x1F68E;</span> Bus</li>
+                <li><span aria-label="van">&#x1F690;</span> Joiner (Van)</li>
+                <li><span aria-label="bicycle">&#x1F6B2;</span> Bicycle</li>
+                <li><span aria-label="person walking">&#x1F6B6;</span> Walking</li>
+            </ul>
+            It will also show the average <span aria-label="sparkles">&#x2728;</span> Eco Rating based on all the destinations you picked. Enjoy & kepp loving Mother Nature! <span aria-label="globe showing Asia and Australia">&#x1F30F;</span> 
+        </li>
+    </ol>
+</section>
 
     <!-- Loading Indicator -->
     <div id="loading-indicator" class="loading hidden">Loading...</div>
