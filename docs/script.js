@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Constants
+    // Constants for better organization
     const DESTINATIONS_URL = '/project_code/destinations.php';
     const TRIP_PLANNER_URL = '/project_code/trip_planner.php';
     
