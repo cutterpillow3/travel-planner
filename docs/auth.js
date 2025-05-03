@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Constants for messages
+    // Constants for messages for better organization
     const LOGIN_SUCCESS_MESSAGE = 'Login successful!';
     const LOGIN_FAILED_MESSAGE = 'Login failed. Incorrect username or password.';
     const REGISTRATION_SUCCESS_MESSAGE = 'Thank you for registering! You can now proceed to log in.';
@@ -55,22 +55,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Handle login
-    function handleLogin(event) {
-        event.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+// Handle login
+function handleLogin(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-        resetLoginMessage();
+    resetLoginMessage();
 
-        if (isValidLogin(username, password)) {
-            displayLoginMessage(LOGIN_SUCCESS_MESSAGE, 'green');
+    fetch('/project_code/users.php', { // Send a POST request to users.php
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded', // Format data like a submitted HTML form
+        },
+        body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`, // Encode username and password
+    })
+    .then(response => response.json()) // Expect a JSON response from users.php
+    .then(data => {
+        if (data.success) {
+            displayLoginMessage(data.message, 'green');
             simulateLogin(username);
-            togglePopup(loginPopupDiv, overlayLoginDiv, false); // Close the login popup
+            togglePopup(loginPopupDiv, overlayLoginDiv, false);
         } else {
-            displayLoginMessage(LOGIN_FAILED_MESSAGE, 'red');
+            displayLoginMessage(data.message, 'red');
         }
-    }
+    })
+    .catch(error => {
+        console.error('Login request failed:', error);
+        displayLoginMessage('An error occurred during login.', 'red');
+    });
+}
 
     // Handle logout
     function handleLogout() {
@@ -116,28 +130,31 @@ document.addEventListener('DOMContentLoaded', () => {
         loginMessageDiv.style.display = 'block';
     }
 
-    // Check if login credentials are valid
-    function isValidLogin(username, password) {
-        return (username === 'testuser' && password === 'simplepassword') ||
-               (username === 'explorer' && password === 'travel123') ||
-               (username === 'guest' && password === 'justlooking');
-    }
+// Simulate user login
+function simulateLogin(username) {
+    const loginButton = document.getElementById('openLoginPopup');
+    const registerButton = document.getElementById('openRegistrationPopup');
 
-    // Simulate user login
-    function simulateLogin(username) {
-        navButtons.style.display = 'none'; // Hide Login/Register buttons
-        userAccountSpan.textContent = `Hi, ${username}`;
-        userAccountSpan.style.display = 'inline';
-        logoutButton.style.display = 'inline';
-    }
+    if (loginButton) loginButton.style.display = 'none';
+    if (registerButton) registerButton.style.display = 'none';
 
-    // Simulate user logout
-    function simulateLogout() {
-        navButtons.style.display = 'block'; // Show Login/Register buttons
-        userAccountSpan.style.display = 'none';
-        userAccountSpan.textContent = '';
-        logoutButton.style.display = 'none';
-    }
+    userAccountSpan.style.display = 'inline'; // Make the username span visible
+    userAccountSpan.textContent = `Mabuhay, ${username}`;
+    logoutButton.style.display = 'inline-block'; // Make the logout button visible
+}
+
+// Simulate user logout
+function simulateLogout() {
+    const loginButton = document.getElementById('openLoginPopup');
+    const registerButton = document.getElementById('openRegistrationPopup');
+
+    if (loginButton) loginButton.style.display = 'inline-block';
+    if (registerButton) registerButton.style.display = 'inline-block';
+
+    userAccountSpan.style.display = 'none';
+    userAccountSpan.textContent = '';
+    logoutButton.style.display = 'none';
+}
 
     // Reset registration message
     function resetRegistrationMessage() {
