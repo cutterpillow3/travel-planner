@@ -13,7 +13,7 @@
 <body>
     <!-- Header Section -->
     <header>
-        <h1>Love PH Travel Planner by Mau</h1>
+        <h1>Love PH Travel Planner</h1>
         <nav>
             <button id="openLoginPopup" aria-label="Open login form">Login</button>
             <button id="openRegistrationPopup" aria-label="Open registration form">Register</button>
@@ -68,7 +68,14 @@
             <h2>Destinations</h2>
             <div id="destination-list"></div>
         </section>
+
+            <!-- Destination Details Popup -->
+    <div id="destination-details-container" class="details-container hidden">
+        <button id="close-details" aria-label="Close details">Close</button>
+    </div>
     
+
+</section>
 
         <!-- Trip Planner Section -->
         <section id="trip-planner">
@@ -93,12 +100,27 @@
 
 
 
-    <!-- Destination Details Popup -->
-    <div id="destination-details-container" class="details-container hidden">
-        <button id="close-details" aria-label="Close details">Close</button>
-    </div>
-    
 
+
+    <!-- Sustainability Section -->
+
+<section id="sustainability">
+    <div class="container">
+        <h2>Love PH Travel Planner supports UN Sustainable Development Goals</h2>
+        <div class="sdg-icons">
+            <img src="images/sdg11.jpg" alt="SDG 11: Sustainable Cities and Communities" width="60" height="60">
+            <img src="images/sdg12.jpg" alt="SDG 12: Responsible Consumption and Production" width="60" height="60">
+            <img src="images/sdg13.jpg" alt="SDG 13: Climate Action" width="60" height="60">
+            <img src="images/sdg14.jpg" alt="SDG 14: Life Below Water" width="60" height="60">
+            <img src="images/sdg15.jpg" alt="SDG 15: Life on Land" width="60" height="60">
+            <img src="images/sdg17.jpg" alt="SDG 17: Partnerships for the Goals" width="60" height="60">
+        </div>
+    </div>
+</section>
+
+<section id="trip-planner">
+    </form>
+</section>
 
     <!-- Loading Indicator -->
     <div id="loading-indicator" class="loading hidden">Loading...</div>
@@ -151,6 +173,10 @@
     <!-- Registration Overlay -->
     <div id="overlayRegistration" class="overlay hidden"></div>
 </main>
+
+<footer>
+    <p>&copy; 2025 Sustainable Travel Planner CMSC 207. All rights reserved.</p>
+</footer>
 
 <!-- JavaScript Files -->
 <script src="script.js"></script>
