@@ -39,11 +39,3 @@ The Sustainable Travel Planner includes a variety of features aimed at enhancing
 #### 3) Sustainability Impact
 The Sustainable Travel Planner aims to promote eco-friendly travel choices and raise awareness about the environmental impact of travel. By providing users with information about eco ratings and sustainable transport options, the application encourages responsible travel behavior. 
 
-**Key Sustainability Impacts:**
-- **Eco Ratings**: The application displays eco ratings for each destination, allowing users to choose locations that prioritize sustainability and environmental conservation.
-- **Transport Options**: By showcasing various transport options, the system empowers users to select more sustainable means of travel, such as public transport, cycling, or walking, rather than relying solely on personal vehicles.
-- **User Awareness**: The platform educates users about the environmental impact of their travel choices, fostering a mindset of sustainability and encouraging users to consider the ecological footprint of their trips.
-- **Community Engagement**: By promoting sustainable travel practices, the application contributes to the broader movement towards eco-friendly tourism, inspiring users to make conscious choices that benefit local communities and the planet.
-
-### Conclusion
-The Sustainable Travel Planner is not just a tool for planning trips; it is a platform that advocates for responsible and sustainable travel practices. By leveraging technology to provide users with essential information, it aims to make a positive impact on both individual travel choices and the environment.
