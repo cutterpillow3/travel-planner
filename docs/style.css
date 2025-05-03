@@ -2,14 +2,14 @@
    Color Palette
 ========================= */
 :root {
-    --primary-color: #A7B59E; /* Light Green from palette */
-    --secondary-color: #ecd3d8; /* Light Pink from palette */
-    --text-color: #35522B; /* Dark Green from palette */
-    --hover-color: #799567; /* Medium Green from palette */
-    --error-color: #d32f2f; /* Keep as is or adjust to a palette color */
-    --success-color: #388e3c; /* Keep as is or adjust to a palette color */
-    --background-color: #e5e9d9; /* Very Light Pink from palette */
-    --accent-color: #799567; /* Medium Green from palette */
+    --primary-color: #A7B59E;
+    --secondary-color: #ecd3d8;
+    --text-color: #35522B;
+    --hover-color: #799567;
+    --error-color: #d32f2f;
+    --success-color: #388e3c;
+    --background-color: #e5e9d9;
+    --accent-color: #799567; 
 }
 
 /* =========================
@@ -28,7 +28,7 @@ body {
 ========================= */
 header {
     background-color: var(--primary-color);
-    color: var(--text-color); /* Dark Green */
+    color: var(--text-color);
     padding: 20px;
     font-family: 'Agbalumo', sans-serif;
     font-size: 1em;
@@ -36,6 +36,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-image: url('images/header-background.jpeg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center; 
 }
 
 header nav button {
@@ -44,14 +48,14 @@ header nav button {
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    background-color: var(--primary-color); /* Light Pink */
-    color: var(--text-color); /* Dark Green */
+    background-color: var(--primary-color);
+    color: var(--text-color);
     font-size: 1em;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 header nav button:hover {
-    background-color: var(--hover-color); /* Medium Green */
+    background-color: var(--hover-color);
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -59,7 +63,7 @@ header nav button:hover {
 #user-account {
     display: none;
     margin-left: 20px;
-    color: var(--text-color); /* Dark Green */
+    color: var(--text-color); 
 }
 
 #logout-button {
@@ -68,17 +72,27 @@ header nav button:hover {
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    background-color: var(--secondary-color); /* Light Pink */
-    color: var(--text-color); /* Dark Green */
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     font-size: 1em;
     display: none;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #logout-button:hover {
-    background-color: var(--hover-color); /* Medium Green */
+    background-color: var(--hover-color);
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background-image: url('images/footer-background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; 
+    color: var(--text-color);
+    padding: 20px; 
+    text-align: center;
 }
 
 /* =========================
@@ -91,7 +105,7 @@ main {
 }
 
 h2 {
-    color: var(--text-color); /* Dark Green */
+    color: var(--text-color);
     font-size: 1.8em;
     margin-bottom: 10px;
 }
@@ -100,11 +114,10 @@ h2 {
    How to Use Section Container Styles
 ========================= */
 .how-to-use-container {
-    max-width: 1100px; /* Adjust this value as needed for the How to Use section */
-    margin: 0 auto; /* Centers the container horizontally */
-    padding: 10px; /* Optional: Add some padding inside the container */
-    text-align: left; /* Adjust text alignment within the section if desired */
-    /* You can add other specific styles here if needed */
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 10px; 
+    text-align: left;
 }
 
 /* =========================
@@ -204,22 +217,22 @@ h2 {
 #trip-form h2 {
     margin-top: 0;
     margin-bottom: 15px;
-    color: var(--text-color); /* Dark Green */
+    color: var(--text-color);
 }
 
 #trip-form label,
 #trip-form select {
     display: block;
     margin-bottom: 10px;
-    color: var(--text-color); /* Dark Green */
+    color: var(--text-color);
 }
 
 #trip-form select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: var(--background-color); /* Light Pink */
-    color: var(--text-color); /* Dark Green */
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-size: 0.8em;
     cursor: pointer;
     appearance: none;
@@ -241,8 +254,8 @@ h2 {
 }
 
 .button {
-    background-color: var(--primary-color); /* Light Green */
-    color: var(--text-color); /* Dark Green */
+    background-color: var(--primary-color);
+    color: var(--text-color);
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
@@ -252,7 +265,7 @@ h2 {
 }
 
 .button:hover {
-    background-color: var(--hover-color); /* Medium Green */
+    background-color: var(--hover-color);
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -266,11 +279,11 @@ h2 {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    background-color: rgb(245, 249, 242); /* Keep white for result background for contrast */
+    background-color: rgb(245, 249, 242);
 }
 
 #trip-results h3 {
-    color: var(--text-color); /* Dark Green */
+    color: var(--text-color);
     margin-top: 0;
 }
 
@@ -283,7 +296,7 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #d6e1d0; /* Light Pink */
+    background-color: #d6e1d0;
     border: 1px solid #ccc;
     padding: 20px;
     z-index: 1000;
@@ -292,27 +305,66 @@ h2 {
     max-width: 90%;
     max-height: 90%;
     overflow: auto;
-    color: var(--text-color); /* Dark Green */
+    color: var(--text-color);
 }
 
 #close-details {
     position: absolute;
     top: 10px;
     right: 10px;
-    padding: 8px 12px; /* Match button padding */
+    padding: 8px 12px;
     border: none;
-    border-radius: 4px; /* Match button border-radius */
-    background-color: var(--accent-color); /* Light Pink like other buttons */
-    color: var(--text-color); /* Dark Green like other button text */
-    font-size: 1em; /* Adjust if needed */
+    border-radius: 4px; 
+    background-color: var(--accent-color);
+    color: var(--text-color); 
+    font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #close-details:hover {
-    background-color: var(--hover-color); /* Medium Green on hover */
+    background-color: var(--hover-color);
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   Sustainability Section Styles
+========================= */
+#sustainability {
+    background-color: var(--background-color); 
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#sustainability h2 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-size: 1.5em; 
+}
+
+.sdg-icons {
+    display: flex;
+    flex-wrap: wrap; /* Allow icons to wrap to the next line on smaller screens */
+    justify-content: center;
+    gap: 20px; /* Space between the icons */
+}
+
+.sdg-icons img {
+    border: 0.5px solid #decece;
+    padding: 10px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: 150px;
+    height: 150px;
+}
+
+.sdg-icons img:hover {
+    transform: translateY(-7px); /* Move the image up slightly on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a shadow to create a lifting effect */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition for the effect */
 }
 
 /* =========================
@@ -330,7 +382,7 @@ h2 {
     z-index: 1000;
     display: none;
     text-align: center;
-    color: var(--text-color); /* Dark Green */
+    color: var(--text-color);
 }
 
 /* =========================
@@ -342,7 +394,7 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #f9f9f9; /* Keep light for contrast */
+    background-color: #f9f9f9;
     padding: 30px;
     border: 1px solid #ddd;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -350,11 +402,11 @@ h2 {
     border-radius: 8px;
     width: 300px;
     text-align: center;
-    color: var(--text-color); /* Dark Green */
+    color: var(--text-color);
 }
 
 .popup h2 {
-    color: var(--text-color); /* Dark Green */
+    color: var(--text-color);
     margin-bottom: 20px;
 }
 
@@ -378,12 +430,12 @@ h2 {
     box-sizing: border-box;
     border-radius: 4px;
     font-size: 1em;
-    color: var(--text-color); /* Dark Green */
+    color: var(--text-color);
 }
 
 .popup button[type="submit"] {
-    background-color: var(--primary-color); /* Light Green */
-    color: var(--text-color); /* Dark Green */
+    background-color: var(--primary-color);
+    color: var(--text-color);
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -395,7 +447,7 @@ h2 {
 }
 
 .popup button[type="submit"]:hover {
-    background-color: var(--hover-color); /* Medium Green */
+    background-color: var(--hover-color);
     transform: scale(1.05);
 }
 
@@ -422,7 +474,7 @@ h2 {
 }
 
 .popup p a {
-    color: #007bff; /* Keep blue for links for better recognition */
+    color: #007bff;
     text-decoration: none;
 }
 
