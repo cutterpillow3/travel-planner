@@ -50,13 +50,13 @@ header nav button {
     background-color: var(--secondary-color);
     color: var(--text-color);
     font-size: 1em;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added box-shadow transition */
 }
 
 header nav button:hover {
     background-color: var(--hover-color);
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow on hover */
 }
 
 #user-account {
@@ -75,13 +75,13 @@ header nav button:hover {
     color: var(--text-color);
     font-size: 1em;
     display: none; 
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added box-shadow transition */
 }
 
 #logout-button:hover {
     background-color: var(--hover-color);
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow on hover */
 }
 
 /* =========================
@@ -97,41 +97,6 @@ h2 {
     color: var(--text-color);
     font-size: 1.8em; /* Increased font size for better visibility */
     margin-bottom: 10px; /* Added margin below headings */
-}
-
-/* =========================
-   Search and Filter Styles
-========================= */
-#search-input {
-    width: 100%; /* Make the input take up full width */
-    padding: 10px; /* Add some padding for better usability */
-    margin-bottom: 10px; /* Space between input and buttons */
-    border: 1px solid #ccc; /* Light border */
-    border-radius: 4px; /* Rounded corners */
-}
-
-#search-button, #clear-search-button {
-    padding: 10px 15px; /* Padding for buttons */
-    margin-left: 5px; /* Space between buttons */
-    border: none; /* Remove border */
-    border-radius: 4px; /* Rounded corners */
-    background-color: var(--primary-color); /* Use primary color */
-    color: white; /* White text */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth transition */
-}
-
-#search-button:hover, #clear-search-button:hover {
-    background-color: var(--hover-color); /* Change color on hover */
-}
-
-/* Styles for the municipality filter */
-#filter-options {
-    margin-bottom: 10px; /* Space below the filter */
-}
-
-#filter-options label {
-    margin-right: 10px; /* Space between label and dropdown */
 }
 
 /* =========================
@@ -356,7 +321,7 @@ h2 {
 }
 
 .popup button[type="submit"] {
-    background-color: #5cb85c; /* Green button */
+    background-color: #5cb85c;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -365,12 +330,12 @@ h2 {
     font-size: 1em;
     width: 100%;
     margin-top: 15px;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .popup button[type="submit"]:hover {
     background-color: #4cae4c;
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    transform: scale(1.05);
 }
 
 .popup .close-button {
@@ -414,7 +379,7 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
 
@@ -423,28 +388,28 @@ h2 {
 ========================= */
 @media (max-width: 768px) {
     main {
-        padding: 10px; /* Reduce padding */
+        padding: 10px;
     }
 
     #destination-list {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+        grid-template-columns: repeat(2, 1fr);
     }
 
     header nav {
-        flex-direction: column; /* Stack nav items vertically on small screens */
+        flex-direction: column;
     }
 
     header nav button {
-        margin: 5px 0; /* Adjust margins */
+        margin: 5px 0;
     }
 }
 
 @media (max-width: 480px) {
     .popup {
-        width: 90%; /* Make popups wider on small screens */
+        width: 90%;
     }
 
     #destination-list {
-        grid-template-columns: 1fr; /* Stack elements on very small screens */
+        grid-template-columns: 1fr;
     }
 }
