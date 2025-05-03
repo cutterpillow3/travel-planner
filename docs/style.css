@@ -62,7 +62,8 @@ header nav button:hover {
 
 #user-account {
     display: none;
-    margin-left: 20px;
+    font-size: 1em;
+    margin-left: 40px;
     color: var(--text-color); 
 }
 
